@@ -1,0 +1,44 @@
+<aside class="col-span-2 border-r border-white/10">
+  <section class="flex flex-col p-4 bg-darkerbggray h-full">
+    <h1 class="text-center mb-2 text-5xl font-bold">AIO</h1>
+
+    <a href="/servers" class="bg-black/10 rounded-xl flex flex-row items-center p-4 my-4 shadow">
+      <img
+        src="<%= guild.iconURL %>"
+        class="rounded-full border-2 border-white"
+        width="32"
+        height="32"
+      />
+      <h3 class="text-lg font-bold ml-2">
+        <%= guild.name %>
+      </h3>
+    </a>
+
+    <ul class="flex flex-col mt-4">      
+        <li class="p-1 flex w-full">
+          <a href="/manage/<%= guild.id %>/basic" class="<% if(currentURL.endsWith('basic')) { %> bg-white/5 font-semibold <% } else { %> bg-white/10 <% } %> w-full px-4 py-3 rounded font-sans">
+            <i class="fas fa-cogs mr-1 w-6"></i> <span>Management</span>
+          </a>
+        </li>
+        <li class="p-1 flex w-full">
+          <a href="/manage/<%= guild.id %>/greeting" class="<% if(currentURL.endsWith('greeting')) { %> bg-white/5 font-semibold <% } else { %> bg-white/10 <% } %> w-full px-4 py-3 rounded font-sans">
+            <i class="fa fa-bullhorn mr-1 w-6"></i> <span>Greeting</span>
+          </a>
+        </li>
+        <li class="p-1 flex w-full">
+          <a href="/manage/<%= guild.id %>/commands" class="<% if(currentURL.endsWith('commands')) { %> bg-white/5 font-semibold <% } else { %> bg-white/10 <% } %> w-full px-4 py-3 rounded font-sans">
+            <i class="fa fa-robot mr-1 w-6"></i> <span>Commands</span>
+          </a>
+        </li>
+        <li class="p-1 flex w-full">
+          <a href="/manage/<%= guild.id %>/ticketpanels" class="<% if(currentURL.endsWith('ticketpanels')) { %> bg-white/5 font-semibold <% } else { %> bg-white/10 <% } %> w-full px-4 py-3 rounded font-sans">
+            <i class="fas fa-ticket-alt mr-1 w-6"></i> <span>Ticket panels</span>
+          </a>
+        </li>
+        </li>
+      </ul>
+    </ul>
+
+    
+  </section>
+</aside>

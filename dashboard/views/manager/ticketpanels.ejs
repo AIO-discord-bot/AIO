@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<%- include('../includes/head') %>
+
+  <body class="bg-bggray text-gray-50 min-h-screen flex flex-col">
+    <div class="grid grid-cols-1 md:grid-cols-8 flex-1">
+      <%- include('../includes/sidebar') %>
+
+      <div class="flex flex-col col-span-6 container">
+          <%- include('../includes/manageheader') %>
+            <h2 class="text-3xl font-semibold underline mx-8 mt-6 mb-2">Ticket panels</h2>
+
+            <section class="grid grid-cols gap-4 my-4 mx-8">
+              <div class="flex flex-col rounded-lg bg-darkerbggray h-[fit-content]">
+                <div class="p-4">
+                  <h3 class="font-semibold text-xl">Add ticket panel</h3>
+                </div>
+                <form role="form" action="/manage/<%= guild.id %>/ticketpanels/" method="POST" class="flex flex-col px-4 pt-2 pb-4">
+                  <div class="flex flex-row items-center space-x-4">
+                    <div class="flex flex-col flex-1">
+                      <label>Name:</label>
+                      <input type="text" name="name" class="px-3 py-1 rounded-md bg-gray-50 text-gray-900" />
+                    </div>
+
+                    <div class="flex flex-col flex-1">
+                      <label>Channel:</label>
+                      <select name="channel" class="px-3 py-1 rounded-md bg-gray-50 text-gray-900">
+                        <option selected="selected">No channel</option>
+                        <% guild.channels.cache.filter((ch)=> ch.type === "GUILD_TEXT").forEach((ch) => { %>
+                          <option value="<%= ch.id %>">#<%= ch.name %>
+                          </option>
+                          <% }); %>
+                      </select>
+                    </div>
+
+                    <div class="flex flex-col flex-1">
+                      <label>Role:</label>
+                      <select name="role" data-search="true" data-silent-initial-value-set="true" multiple>
+                        <% guild.roles.cache.filter((role)=> role.id !== guild.id).forEach((role) => { %>
+                          <option value="<%= role.id %>">
+                            <%= role.name %>
+                          </option>
+                          <% }); %>
+                      </select>
+                    </div>
+                  </div>
+                  <button type="submit" name="ticketPanelsAdd"
+                    class="px-3 py-1 rounded-md flex-1 mt-4 bg-primary transition-opacity duration-300 hover:opacity-70">
+                    Add
+                  </button>
+                </form>
+              </div>
+
+          <div class="flex flex-col rounded-lg bg-darkerbggray h-[fit-content]">
+                <div class="p-4">
+                  <h3 class="font-semibold text-xl">Configure ticket panels</h3>
+                </div>
+                <% guild?.ticketPanels?.map(ticketPanel=> { %>
+                  <div class="px-4 pt-2 pb-4 rounded-lg">
+                    <div class="flex flex-row items-center space-x-8">
+                      <div class="flex flex-col min-w-[4rem] mr-16">
+                        <span class="text-lg font-semibold">
+                          <%= ticketPanel.name %>
+                        </span>
+                      </div>
+
+                      <div class="flex flex-1">
+                        <div class="flex flex-col w-full">
+                          <label>Channel:</label>
+                          <form role="form" action="/manage/<%= guild.id %>/ticketpanels/send" method="POST"
+                            class="flex flex-row items-center">
+                            <select name="channel" class="px-3 py-1 rounded-md bg-gray-50 text-gray-900 w-full">
+                              <% guild.channels.cache.filter((ch)=> ch.type === "GUILD_TEXT").forEach((ch) => { %>
+                                <option value="<%= ch.id %>" <% if(ticketPanel.channel===ch.id) { %> selected="selected"
+                                  <% }%> >#<%= ch.name %>
+                                </option>
+                                <% }); %>
+                            </select>
+                            <input type="hidden" name="id" value="<%= ticketPanel._id %>">
+                            <button type="submit" name="ticketPanelsSend"
+                              class="px-3 py-1 rounded-md flex-1 bg-primary transition-opacity duration-300 hover:opacity-70 ml-2 min-w-fit">
+                              Send & Update
+                            </button>
+                          </form>
+                        </div>
+                      </div>
+
+                      <div class="flex flex-col flex-1">
+                        <label>Role:</label>
+                        <form role="form" action="/manage/<%= guild.id %>/ticketpanels/update" method="POST"
+                          class="flex flex-row items-center">
+                          <select name="role" data-search="true" data-silent-initial-value-set="true" multiple>
+                            <% guild.roles.cache.filter((role)=> role.id !== guild.id).forEach((role) => { %>
+                              <option value="<%= role.id %>" <% if(ticketPanel.role.includes(role.id)) { %>
+                                selected="selected" <% } %> >
+                                  <%= role.name %>
+                              </option>
+                              <% }); %>
+                          </select>
+
+                          <input type="hidden" name="id" value="<%= ticketPanel._id %>">
+                          <button type="submit" name="ticketPanelsAdd"
+                            class="px-3 py-1 rounded-md flex-[1/2] ml-2 bg-primary transition-opacity duration-300 hover:opacity-70">
+                            Update
+                          </button>
+                        </form>
+                      </div>
+                      <form role="form" action="/manage/<%= guild.id %>/ticketpanels/delete" method="POST"
+                        class="flex flex-row items-center flex-[1/2]">
+                        <input type="hidden" name="id" value="<%= ticketPanel._id %>">
+                        <button type="submit" name="ticketPanelsAdd"
+                          class="px-3 py-1 rounded-md flex-[1/2] mt-4 bg-red-700 transition-opacity duration-300 hover:opacity-70">
+                          Delete
+                        </button>
+                      </form>
+                    </div>
+                  </div>
+                  <% }) %>
+              </div>
+            </section>
+            <%- include('../includes/footer') %>
+        </div>
+    </div>
+      <script defer>
+        VirtualSelect.init({
+          ele: 'select[name="role"]',
+          setValueAsArray: true,
+          additionalClasses: "h-[32px] rounded-md bg-gray-50 text-gray-900",
+          optionHeight: 32,
+        });
+      </script>
+  </body>
+
+</html>
