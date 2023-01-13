@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+<%- include('../includes/head') %>
+
+  <body class="bg-bggray text-gray-50 min-h-screen flex flex-col">
+    <div class="grid grid-cols-1 md:grid-cols-8 flex-1">
+      <%- include('../includes/sidebar') %>
+
+        <div class="flex flex-col col-span-6 container">
+          <%- include('../includes/manageheader') %>
+            <h2 class="text-3xl font-bold mx-8 mt-6 mb-2"><i class="fa-solid fa-user-plus fa-sm"></i> Greeting
+            </h2>
+            <section class="grid grid-cols gap-4 my-4 mx-8">
+              <!-- WELCOME CONFIGURATION -->
+              <div class="background-1">
+                <div class="flex flex-col rounded-lg bg-darkerbggray h-[fit-content]">
+                  <div class="p-4">
+                    <h3 class="font-semibold text-xl">Welcome Embed</h3>
+                  </div>
+                  <form role="form" action="/manage/<%= guild.id %>/greeting" method="POST"
+                    class="flex flex-col px-4 pt-2 pb-4">
+                    <div class="flex flex-col">
+                      <label><i class="fa fa-pencil-square-o"></i> Content (Message before the Embed is sent):</label>
+                      <% if(guild.welcome.embed.description || guild.welcome.content) {%>
+                        <textarea rows="3" name="content" class="px-3 py-1 rounded-md bg-gray-50 text-gray-900">
+<%- guild.welcome.content?.replaceAll(/\\n/g, '&#10;') %></textarea>
+                        <% } else { %>
+                          <textarea rows="3" name="content" class="px-3 py-1 rounded-md bg-gray-50 text-gray-900"
+                            placeholder="<%= 'Welcome to the server {member:name} 🎉' %>"></textarea>
+                          <% } %>
+                    </div>
+                    <div class="flex flex-col mt-2">
+                      <label><i class="fa fa-pencil-square-o"></i> Description:</label>
+                      <textarea rows="3" name="description" class="px-3 py-1 rounded-md bg-gray-50 text-gray-900">
+<%- guild.welcome.embed.description?.replaceAll(/\\n/g, '&#10;') %></textarea>
+
+                      <br>
+                      <p class="flex flex-col mt-2">Syntax:</p>
+                      <br>
+                      <hr>
+                      <div class="syntax">
+                        <p class="text-sm text-gray-400">
+                          <br>
+                          <span class="text-red-300"><code><wrap>{member.id}</wrap></code></span> <img
+                            class="welcome-emoji"
+                            src="https://images-ext-1.discordapp.net/external/yySqgbSeebyNTs8HfrLOj4G2a0yHs1FE9A7IxIhlhco/https/cdn.discordapp.com/emojis/599612545002635274.png"
+                            width="20px" height="20px" style="display:inline-block;"> Member ID
+                        </p>
+                        <p class="text-sm text-gray-400"><span
+                            class="text-red-300"><code><wrap>{member.name}<wrap></code></span> <img
+                            class="welcome-emoji"
+                            src="https://images-ext-1.discordapp.net/external/yySqgbSeebyNTs8HfrLOj4G2a0yHs1FE9A7IxIhlhco/https/cdn.discordapp.com/emojis/599612545002635274.png"
+                            width="20px" height="20px" style="display:inline-block;"> Member's Username </p>
+                        <p class="text-sm text-gray-400"><span class="text-red-300"><code>{member.tag}</code></span>
+                          <img class="welcome-emoji"
+                            src="https://images-ext-1.discordapp.net/external/yySqgbSeebyNTs8HfrLOj4G2a0yHs1FE9A7IxIhlhco/https/cdn.discordapp.com/emojis/599612545002635274.png"
+                            width="20px" height="20px" style="display:inline-block;"> Member's Tag
+                        </p>
+                        <p class="text-sm text-gray-400"><span class="text-red-300"><code>{inviter.name}</code></span>
+                          <img class="welcome-emoji"
+                            src="https://images-ext-1.discordapp.net/external/yySqgbSeebyNTs8HfrLOj4G2a0yHs1FE9A7IxIhlhco/https/cdn.discordapp.com/emojis/599612545002635274.png"
+                            width="20px" height="20px" style="display:inline-block;">
+                          Inviter's Name <span class="module-req">(Module Required: Invites)</span>
+                        </p>
+                        <p class="text-sm text-gray-400"><span class="text-red-300"><code>{inviter.tag}</code></span>
+                          <img class="welcome-emoji"
+                            src="https://images-ext-1.discordapp.net/external/yySqgbSeebyNTs8HfrLOj4G2a0yHs1FE9A7IxIhlhco/https/cdn.discordapp.com/emojis/599612545002635274.png"
+                            width="20px" height="20px" style="display:inline-block;">
+                          Inviter's Tag <span class="module-req">(Module Required: Invites)</span>
+                        </p>
+                        <p class="text-sm text-gray-400"> <span class="text-red-300"><code>{invites}</code></span><img
+                            class="welcome-emoji"
+                            src="https://images-ext-1.discordapp.net/external/yySqgbSeebyNTs8HfrLOj4G2a0yHs1FE9A7IxIhlhco/https/cdn.discordapp.com/emojis/599612545002635274.png"
+                            width="20px" height="20px" style="display:inline-block;">
+                          Inviter's Total Invites (Module Required: Invites)</p>
+                        <p class="text-sm text-gray-400"><span class="text-red-300"><code>{server}</code></span> <img
+                            class="welcome-emoji"
+                            src="https://images-ext-1.discordapp.net/external/yySqgbSeebyNTs8HfrLOj4G2a0yHs1FE9A7IxIhlhco/https/cdn.discordapp.com/emojis/599612545002635274.png"
+                            width="20px" height="20px" style="display:inline-block;">
+                          Server Name
+                        </p>
+                        <p class="text-sm text-gray-400"><span class="text-red-300"><code>{count}</code></span> <img
+                            class="welcome-emoji"
+                            src="https://images-ext-1.discordapp.net/external/yySqgbSeebyNTs8HfrLOj4G2a0yHs1FE9A7IxIhlhco/https/cdn.discordapp.com/emojis/599612545002635274.png"
+                            width="20px" height="20px" style="display:inline-block;"> Member
+                          Count
+                        </p>
+                        <p class="text-sm text-gray-400"><span class="text-red-300"><code>{time}</code></span> <img
+                            class="welcome-emoji"
+                            src="https://images-ext-1.discordapp.net/external/yySqgbSeebyNTs8HfrLOj4G2a0yHs1FE9A7IxIhlhco/https/cdn.discordapp.com/emojis/599612545002635274.png"
+                            width="20px" height="20px" style="display:inline-block;"> Current
+                          time
+                        </p>
+                        <br>
+                        </p>
+                        <p class="text-sm text-gray-400"><span class="text-red-300">Example Message:</span>
+                          <br>
+                          <img class="welcome-emoji"
+                            src="https://images-ext-1.discordapp.net/external/AUZt8tsS9FLpI_FDoyTRaBhI0hmiRyWVVmpI8y51DnE/https/cdn.discordapp.com/emojis/733553791105761360.gif"
+                            width="20px" height="20px" style="display:inline-block;"> Welcome to
+                          <code>{server}</code>
+                          <code><@{member.id}></code>! You are member <code>{count}</code>, and you were invited by
+                          <code>{inviter.name}</code> who now has <code>{invites}</code> Invites!
+
+                        </p>
+                        <br>
+                        <hr>
+                      </div>
+                    </div>
+                    <br>
+                    <div class="flex flex-col mt-2">
+                      <label>Footer:</label>
+                      <input type="text" name="footer" class="px-3 py-1 rounded-md bg-gray-50 text-gray-900"
+                        value="<%= guild.welcome.embed.footer %>" />
+                    </div>
+                    <div class="flex flex-col mt-2">
+                      <label>Hex Color:</label>
+                      <input type="text" name="hexcolor" class="px-3 py-1 rounded-md bg-gray-50 text-gray-900"
+                        value="<%= guild.welcome.embed.color %>" />
+                    </div>
+                    <div class="flex flex-col mt-2">
+                      <label>Channel:</label>
+                      <select class="px-3 py-1 rounded-md bg-gray-50 text-gray-900" name="channel">
+                        <% if(bot.channels.cache.has(guild.welcome.channel)){ %>
+                          <option selected="selected">#<%= bot.channels.cache.get(guild.welcome.channel).name %>
+                          </option>
+                          <% guild.channels.cache.filter((ch)=> ch.id !== guild.welcome.channel && ch.type ===
+                            "GUILD_TEXT").forEach((ch) => { %>
+                            <option>#<%= ch.name %>
+                            </option>
+                            <% }); } else { %>
+                              <option selected="selected">
+                                #<%= guild.channels.cache.filter((ch)=> ch.type === "GUILD_TEXT").first().name %>
+                              </option>
+                              <% guild.channels.cache.filter((ch)=> ch.id !== guild.channels.cache.first().id &&
+                                ch.type
+                                ===
+                                "GUILD_TEXT").forEach((ch) => { %>
+                                <option>#<%= ch.name %>
+                                </option>
+                                <% }); %>
+                                  <% } %>
+                      </select>
+                    </div>
+                    <div class="flex flex-col mt-2">
+                      <div class="flex items-center">
+                        <label class="inline-flex items-center">
+                          <% if(guild.welcome.embed.thumbnail) { %>
+                            <input type="checkbox" name="thumbnail" class="custom-checkbox mr-1" checked />Thumbnail
+                            <% } else { %> <input type="checkbox" name="thumbnail"
+                                class="custom-checkbox mr-1" />Thumbnail
+                              <% } %>
+                        </label>
+                      </div>
+                    </div>
+
+                    // add another class with the title "preview"
+                    
+                    <div class="mt-4">
+                      <% if(guild.welcome.enabled){ %>
+                        <button type="submit" name="welcomeDisable"
+                          class="px-3 py-1 rounded-md warning transition-opacity duration-300 hover:opacity-70">
+                          <i class="fa-light fa-toggle-off"></i> Disable Messages
+                        </button>
+                        <button type="submit" name="welcomeUpdate"
+                          class="px-3 py-1 rounded-md bg-primary transition-opacity duration-300 hover:opacity-70">
+                          Update
+                        </button>
+                        <% } else { %>
+                          <button type="submit" name="welcomeEnable"
+                            class="px-3 py-1 rounded-md bg-primary transition-opacity duration-300 hover:opacity-70">
+                            <i class="fa-light fa-toggle-off"></i> Enable Message
+                          </button>
+                          <% } %>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <div class="background-1">
+                <!-- FAREWELL CONFIGURATION -->
+                <div class="flex flex-col rounded-lg bg-darkerbggray h-[fit-content]">
+                  <div class="p-4">
+                    <h3 class="font-semibold text-xl">Farewell Configuration</h3>
+                  </div>
+                  <form role="form" action="/manage/<%= guild.id %>/greeting" method="POST"
+                    class="flex flex-col px-4 pt-2 pb-4">
+                    <div class="flex flex-col">
+                      <label><i class="fa fa-pencil-square-o"></i> Content (Message before the Embed is sent):</label>
+                      <% if(guild.farewell.embed.description || guild.farewell.content) {%>
+                        <textarea rows="3" name="content" class="px-3 py-1 rounded-md bg-gray-50 text-gray-900">
+<%- guild.farewell.content?.replaceAll(/\\n/g, '&#10;') %></textarea>
+                        <% } else { %>
+                          <textarea rows="3" name="content" class="px-3 py-1 rounded-md bg-gray-50 text-gray-900"
+                            placeholder="<%= '{member:tag} has left the server 👋' %>"></textarea>
+                          <% } %>
+                    </div>
+                    <div class="flex flex-col mt-2">
+                      <label><i class="fa fa-pencil-square-o"></i> Description:</label>
+                      <textarea rows=" 3" name="description"
+                        class="px-3 py-1 rounded-md bg-gray-50 text-gray-900"><%- guild.farewell.embed.description?.replaceAll(/\\n/g, '&#10;' ) %></textarea>
+                      <br>
+                      <p class="flex flex-col mt-2">Syntax:</p>
+                      <br>
+                      <hr>
+                      <div class="syntax">
+                        <p class="text-sm text-gray-400">
+                          <br>
+                          <span class="text-red-300"><code><wrap>{member.id}</wrap></code></span>
+                          <img class="welcome-emoji"
+                            src="https://images-ext-1.discordapp.net/external/yySqgbSeebyNTs8HfrLOj4G2a0yHs1FE9A7IxIhlhco/https/cdn.discordapp.com/emojis/599612545002635274.png"
+                            width="20px" height="20px" style="display:inline-block;"> Member ID
+                        </p>
+                        <p class="text-sm text-gray-400"><span
+                            class="text-red-300"><code><wrap>{member.name}<wrap></code></span> <img
+                            class="welcome-emoji"
+                            src="https://images-ext-1.discordapp.net/external/yySqgbSeebyNTs8HfrLOj4G2a0yHs1FE9A7IxIhlhco/https/cdn.discordapp.com/emojis/599612545002635274.png"
+                            width="20px" height="20px" style="display:inline-block;"> Member's Username
+                        </p>
+                        <p class="text-sm text-gray-400"><span class="text-red-300"><code>{member.tag}</code></span>
+                          <img class="welcome-emoji"
+                            src="https://images-ext-1.discordapp.net/external/yySqgbSeebyNTs8HfrLOj4G2a0yHs1FE9A7IxIhlhco/https/cdn.discordapp.com/emojis/599612545002635274.png"
+                            width="20px" height="20px" style="display:inline-block;">
+                          Member's Tag
+                        </p>
+                        <p class="text-sm text-gray-400"><span class="text-red-300"><code>{inviter.name}</code></span>
+                          <img class="welcome-emoji"
+                            src="https://images-ext-1.discordapp.net/external/yySqgbSeebyNTs8HfrLOj4G2a0yHs1FE9A7IxIhlhco/https/cdn.discordapp.com/emojis/599612545002635274.png"
+                            width="20px" height="20px" style="display:inline-block;">
+                          Inviter's Name <span class="module-req">(Module Required: Invites)</span>
+                        </p>
+                        <p class="text-sm text-gray-400"><span class="text-red-300"><code>{inviter.tag}</code></span>
+                          <img class="welcome-emoji"
+                            src="https://images-ext-1.discordapp.net/external/yySqgbSeebyNTs8HfrLOj4G2a0yHs1FE9A7IxIhlhco/https/cdn.discordapp.com/emojis/599612545002635274.png"
+                            width="20px" height="20px" style="display:inline-block;">
+                          Inviter's Tag <span
+                            class="px-3 py-1 rounded-md flex-[1/2] mt-4 module-req transition-opacity duration-300 hover:opacity-70">(Module
+                            Required: Invites)<span class="module-req">
+                        </p>
+                        <p class="text-sm text-gray-400"><span class="text-red-300"><code>{invites}</code></span>
+                          <img class="welcome-emoji"
+                            src="https://images-ext-1.discordapp.net/external/yySqgbSeebyNTs8HfrLOj4G2a0yHs1FE9A7IxIhlhco/https/cdn.discordapp.com/emojis/599612545002635274.png"
+                            width="20px" height="20px" style="display:inline-block;"> Inviter's Total Invites (Module
+                          Required: Invites)
+                        </p>
+                        <p class="text-sm text-gray-400"><span class="text-red-300"><code>{server}</code></span> <img
+                            class="welcome-emoji"
+                            src="https://images-ext-1.discordapp.net/external/yySqgbSeebyNTs8HfrLOj4G2a0yHs1FE9A7IxIhlhco/https/cdn.discordapp.com/emojis/599612545002635274.png"
+                            width="20px" height="20px" style="display:inline-block;">
+                          Server Name
+                        </p>
+                        <p class="text-sm text-gray-400"><span class="text-red-300"><code>{count}</code></span> <img
+                            class="welcome-emoji"
+                            src="https://images-ext-1.discordapp.net/external/yySqgbSeebyNTs8HfrLOj4G2a0yHs1FE9A7IxIhlhco/https/cdn.discordapp.com/emojis/599612545002635274.png"
+                            width="20px" height="20px" style="display:inline-block;">
+                          Member
+                          Count
+                        </p>
+                        <p class="text-sm text-gray-400"><span class="text-red-300"><code>{time}</code></span> <img
+                            class="welcome-emoji"
+                            src="https://images-ext-1.discordapp.net/external/yySqgbSeebyNTs8HfrLOj4G2a0yHs1FE9A7IxIhlhco/https/cdn.discordapp.com/emojis/599612545002635274.png"
+                            width="20px" height="20px" style="display:inline-block;">
+                          Current
+                          time
+                        </p>
+                        <br>
+                        </p>
+                        <p class="text-sm text-gray-400"><span class="text-red-300">Example Message:</span>
+                          <br>
+                          <img class="welcome-emoji"
+                            src="https://images-ext-2.discordapp.net/external/UcVlIaXdong0DrFnEb28VAXZSuwEGAHSbpLh4j9xyyg/https/cdn.discordapp.com/emojis/749896146025054238.gif"
+                            width="20px" height="20px" style="display:inline-block;"> Goodbye
+                          <code> <@{member.id}> </code>! We hope you enjoyed your stay here at <code>
+                          {server} </code>! You were the <code> {count} </code> member to join the server!</code>! And
+                          you were invited by
+                          <code>{inviter.name}</code> who now has <code>{invites}</code> Invites!
+                        </p>
+                        <br>
+                        <hr>
+                      </div>
+                    </div>
+                    <div class="flex flex-col mt-2">
+                      <label>Footer:</label>
+                      <input type="text" name="footer" class="px-3 py-1 rounded-md bg-gray-50 text-gray-900"
+                        value="<%= guild.farewell.embed.footer %>" />
+                    </div>
+                    <div class="flex flex-col mt-2">
+                      <label>Hex Color:</label>
+                      <input type="text" name="hexcolor" class="px-3 py-1 rounded-md bg-gray-50 text-gray-900"
+                        value="<%= guild.farewell.embed.color %>" />
+                    </div>
+                    <div class="flex flex-col mt-2">
+                      <label>Channel:</label>
+                      <select class="px-3 py-1 rounded-md bg-gray-50 text-gray-900" name="channel">
+                        <% if(bot.channels.cache.has(guild.farewell.channel)){ %>
+                          <option selected="selected">#<%= bot.channels.cache.get(guild.farewell.channel).name %>
+                          </option>
+                          <% guild.channels.cache.filter((ch)=> ch.id !== guild.farewell.channel && ch.type ===
+                            "GUILD_TEXT").forEach((ch) => { %>
+                            <option>#<%= ch.name %>
+                            </option>
+                            <% }); } else { %>
+                              <option selected="selected">
+                                #<%= guild.channels.cache.filter((ch)=> ch.type === "GUILD_TEXT").first().name %>
+                              </option>
+                              <% guild.channels.cache.filter((ch)=> ch.id !== guild.channels.cache.first().id && ch.type
+                                ===
+                                "GUILD_TEXT").forEach((ch) => { %>
+                                <option>#<%= ch.name %>
+                                </option>
+                                <% }); %>
+                                  <% } %>
+                      </select>
+                    </div>
+                    <div class="flex flex-col mt-2">
+                      <div class="flex items-center">
+                        <label class="inline-flex items-center">
+                          <% if(guild.farewell.embed.thumbnail) { %>
+                            <input type="checkbox" name="thumbnail" class="custom-checkbox mr-1" checked />Thumbnail <%
+                              } else { %> <input type="checkbox" name="thumbnail"
+                                class="custom-checkbox mr-1" />Thumbnail
+                              <% } %>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="mt-4">
+                      <% if(guild.farewell.enabled){ %>
+                        <button type="submit" name="farewellDisable"
+                          class="px-3 py-1 rounded-md bg-primary transition-opacity duration-300 hover:opacity-70">
+                          Disable Messages
+                        </button>
+                        <button type="submit" name="farewellUpdate"
+                          class="px-3 py-1 rounded-md bg-primary transition-opacity duration-300 hover:opacity-70">
+                          Update
+                        </button>
+                        <% } else { %>
+                          <button type="submit" name="farewellEnable"
+                            class="px-3 py-1 rounded-md bg-primary transition-opacity duration-300 hover:opacity-70">
+                            Enable Message
+                          </button>
+                          <% } %>
+                    </div>
+                  </form>
+                </div>
+            </section>
+        </div>
+    </div>
+    <%- include('../includes/footer') %>
+  </body>
+
+</html>

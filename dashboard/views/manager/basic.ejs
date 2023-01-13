@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<%- include('../includes/head') %>
+
+  <body class="bg-bggray text-gray-50 min-h-screen flex flex-col">
+    <div class="grid grid-cols-1 md:grid-cols-8 flex-1">
+      <%- include('../includes/sidebar') %>
+
+        <div class="flex flex-col col-span-6 container">
+          <%- include('../includes/manageheader') %>
+            <h2 class="text-3xl font-bold mx-8 mt-6 mb-2"><i class="fa-solid fa-shield-check fa-sm"></i> Management
+            </h2>
+            <section class="grid grid-cols gap-4 my-4 mx-8 relative">
+              <!-- BASIC CONFIGURATION -->
+              <div class="background-1">
+                <div class="flex flex-col rounded-lg bg-darkerbggray h-[fit-content]">
+                  <div class="p-4">
+                    <h3 class="font-semibold text-xl">General Configuration</h3>
+                  </div>
+                  <form role="form" action="/manage/<%= guild.id %>/basic/" method="POST"
+                    class="flex flex-col px-4 pt-2 pb-4">
+                    <div class="flex flex-col">
+                      <div class="help-tip">
+                        <p>Prefix: The prefix the server uses to summon the bot E.G !help | Moderation Logs: The channel
+                          all moderation logs are sent to E.G when a user is banned!</p>
+                      </div><label>Prefix:</label>
+                      <input type="text" name="prefix" class="px-3 py-1 rounded-md bg-txt-box txt-white"
+                        placeholder="<%= guild.prefix %>" />
+                    </div>
+                    <div class="flex flex-col mt-2">
+                      <div class="flex items-center">
+                        <label class="inline-flex items-center">
+                          <% if(guild.ranking.enabled) { %>
+                            <input type="checkbox" name="ranking" class="custom-checkbox" checked /><span
+                              class="ml-1">Ranking </span>
+                            <% } else { %> <input type="checkbox" name="ranking" class="custom-checkbox" /><span
+                                class="ml-1">Ranking </span>
+                              <% } %>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="flex flex-col mt-2">
+                      <div class="flex items-center">
+                        <label class="inline-flex items-center">
+                          <% if(guild.flag_translation?.enabled) { %>
+                            <input type="checkbox" name="flag_translation" class="custom-checkbox" checked /><span
+                              class="ml-1">Flag Translation</span>
+                            <% } else { %> <input type="checkbox" name="flag_translation"
+                                class="custom-checkbox" /><span class="ml-1">Flag Translation</span>
+                              <% } %>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="flex flex-col mt-2">
+                      <label>Moderation Logs:</label>
+                      <select class="px-3 py-1 rounded-md bg-txt-box txt-white" name="modlog_channel">
+                        <% if(guild.modlog_channel && bot.channels.cache.has(guild.modlog_channel)){ %>
+                          <option selected="selected">#<%= bot.channels.cache.get(guild.modlog_channel).name %>
+                          </option>
+                          <% guild.channels.cache.filter((ch)=> ch.type === "GUILD_TEXT" && ch.id !==
+                            guild.modlog_channel).forEach((ch) => { %>
+                            <option>#<%= ch.name %>
+                            </option>
+                            <% }); %>
+                              <option>No channel</option>
+                              <% } else { %>
+                                <option selected="selected">No channel</option>
+                                <% guild.channels.cache.filter((ch)=> ch.type === "GUILD_TEXT").forEach((ch) => { %>
+                                  <option>#<%= ch.name %>
+                                  </option>
+                                  <% }); %>
+                                    <% } %>
+                      </select>
+                    </div>
+                    <div class="mt-4">
+                      <button type="submit" name="basicUpdate"
+                        class="px-3 py-1 rounded-md bg-primary transition-opacity duration-300 hover:opacity-70">
+                        <i class="fa-solid fa-wrench"></i> Update
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <div class="background-1">
+                <div class=" flex flex-col rounded-lg bg-darkerbggray h-[fit-content]">
+                  <div class="p-4">
+                    <h3 class="font-semibold text-xl">Ticket Configuration</h3>
+                  </div>
+                  <form role="form" action="/manage/<%= guild.id %>/basic/" method="POST"
+                    class="flex flex-col px-4 pt-2 pb-4">
+                    <div class="flex flex-col">
+                      <div class="help-tip-2">
+                        <p>Help Article Coming Soon!</p>
+                      </div><label>Ticket Limit:</label>
+                      <input type="number" name="limit" placeholder="<%= guild.ticket.limit %>"
+                        class="px-3 py-1 rounded-md bg-txt-box txt-white" />
+                    </div>
+                    <div class="flex flex-col mt-2">
+                      <label>Ticket Logs:</label>
+                      <select name="channel" class="px-3 py-1 rounded-md bg-txt-box txt-white">
+                        <% if(guild.ticket.log_channel && bot.channels.cache.has(guild.ticket.log_channel)){ %>
+                          <option selected="selected">#<%= bot.channels.cache.get(guild.ticket.log_channel).name %>
+                          </option>
+                          <% guild.channels.cache.filter((ch)=> ch.type === "GUILD_TEXT" && ch.id !==
+                            guild.ticket.log_channel).forEach((ch) => { %>
+                            <option>#<%= ch.name %>
+                            </option>
+                            <% }); %>
+                              <option>No channel</option>
+                              <% } else { %>
+                                <option selected="selected">No channel</option>
+                                <% guild.channels.cache.filter((ch)=> ch.type === "GUILD_TEXT").forEach((ch) => { %>
+                                  <option>#<%= ch.name %>
+                                  </option>
+                                  <% }); %>
+                                    <% } %>
+                      </select>
+                    </div>
+                    <div class="mt-4">
+                      <button type="submit" name="ticketUpdate"
+                        class="px-3 py-1 rounded-md bg-primary transition-opacity duration-300 hover:opacity-70">
+                        <i class="fa-solid fa-wrench"></i> Update
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <!-- INVITE CONFIGURATION -->
+              <div class="background-1">
+                <div class="flex flex-col rounded-lg bg-darkerbggray h-[fit-content]">
+                  <div class="p-4">
+                    <h3 class="font-semibold text-xl">Invite Configuration</h3>
+                  </div>
+                  <form role="form" action="/manage/<%= guild.id %>/basic/" method="POST"
+                    class="flex flex-col px-4 pt-2 pb-4">
+                    <div class="flex items-center">
+                      <label class="inline-flex items-center">
+                        <% if(guild.invite.tracking) { %>
+                          <input type="checkbox" name="tracking" class="custom-checkbox" checked /><span
+                            class="ml-1">Invite
+                            Tracking</span>
+                          <% } else { %> <input type="checkbox" name="tracking" class="custom-checkbox" /><span
+                              class="ml-1">Invite
+                              Tracking</span>
+                            <% } %>
+                      </label>
+                    </div>
+                    <div class="mt-4">
+                      <button type="submit" name="inviteUpdate"
+                        class="px-3 py-1 rounded-md bg-primary transition-opacity duration-300 hover:opacity-70">
+                        <i class="fa-solid fa-wrench"></i> Update
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <!-- AUTOMOD CONFIGURATION -->
+              <div class="background-1">
+                <div class=" flex flex-col rounded-lg bg-darkerbggray h-[fit-content]">
+                  <div class="p-4">
+                    <h3 class="font-semibold text-xl">Automod Configuration</h3>
+                  </div>
+                  <form role="form" action="/manage/<%= guild.id %>/basic/" method="POST"
+                    class="flex flex-col px-4 pt-2 pb-4">
+                    <div class="flex flex-col">
+                      <label>Max Strikes:</label>
+                      <input type="number" name="max_strikes" class="px-3 py-1 rounded-md bg-txt-box txt-white"
+                        placeholder="<%= guild.automod.strikes %>" />
+                    </div>
+                    <div class="flex flex-col mt-2">
+                      <label>Max Strikes Action:</label>
+                      <select class="px-3 py-1 rounded-md bg-txt-box txt-white" name="automod_action">
+                        <option selected="selected">
+                          <%= guild.automod.action %>
+                        </option>
+                        <% if(guild.automod.action !=="MUTE" ) { %>
+                          <option>MUTE</option>
+                          <% } %>
+                            <% if(guild.automod.action !=="KICK" ) { %>
+                              <option>KICK</option>
+                              <% } %>
+                                <% if(guild.automod.action !=="BAN" ) { %>
+                                  <option>BAN</option>
+                                  <% } %>
+                      </select>
+                    </div>
+                    <div class="flex flex-col mt-2">
+                      <label>Max Lines:</label>
+                      <input type="number" name="max_lines" class="px-3 py-1 rounded-md bg-txt-box txt-white"
+                        placeholder="<%= guild.automod.max_lines %>" />
+                    </div>
+                    <div class="flex flex-col mt-2">
+                      <label>Max Mentions:</label>
+                      <input type="number" name="max_mentions" class="px-3 py-1 rounded-md bg-txt-box txt-white"
+                        placeholder="<%= guild.automod.max_mentions %>" />
+                    </div>
+                    <div class="flex flex-col mt-2">
+                      <label>Max Role Mentions:</label>
+                      <input type="number" name="max_role_mentions" class="px-3 py-1 rounded-md bg-txt-box txt-white"
+                        placeholder="<%= guild.automod.max_role_mentions %>" />
+                    </div>
+                    <div class="flex flex-col">
+                      <div class="flex items-center mt-2">
+                        <label class="inline-flex items-center">
+                          <% if(guild.automod.anti_links) { %>
+                            <input type="checkbox" name="anti_links" class="custom-checkbox mr-1" checked />Anti Links
+                            <% } else { %> <input type="checkbox" name="anti_links" class="custom-checkbox mr-1" />Anti
+                              Links <% } %>
+                        </label>
+                      </div>
+                      <div class="flex items-center mt-2">
+                        <label class="inline-flex items-center">
+                          <% if(guild.automod.anti_scam) { %>
+                            <input type="checkbox" name="anti_scam" class="custom-checkbox mr-1" checked />Anti Scam <%
+                              } else { %>
+                              <input type="checkbox" name="anti_scam" class="custom-checkbox mr-1" />Anti Scam
+                              <% } %>
+                        </label>
+                      </div>
+                      <div class="flex items-center mt-2">
+                        <label class="inline-flex items-center">
+                          <% if(guild.automod.anti_invites) { %>
+                            <input type="checkbox" name="anti_invites" class="custom-checkbox mr-1" checked />Anti
+                            Invites
+                            <% } else { %> <input type="checkbox" name="anti_invites"
+                                class="custom-checkbox mr-1" />Anti
+                              Invites <% } %>
+                        </label>
+                      </div>
+                      <div class="flex items-center mt-2">
+                        <label class="inline-flex items-center">
+                          <% if(guild.automod.anti_ghostping) { %>
+                            <input type="checkbox" name="anti_ghostping" class="custom-checkbox mr-1" checked />Anti
+                            Ghostping
+                            <% } else { %> <input type="checkbox" name="anti_ghostping"
+                                class="custom-checkbox mr-1" />Anti
+                              Ghostping <% } %>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="flex flex-col mt-2">
+                      <label>Whitelisted Channels</label>
+                      <select class="px-3 py-1 rounded-md bg-txt-box txt-white" name="whitelisted">
+                        <% if(guild.modlog_channel && bot.channels.cache.has(guild.modlog_channel)){ %>
+                          <option selected="selected">#<%= bot.channels.cache.get(guild.modlog_channel).name %>
+                          </option>
+                          <% guild.channels.cache.filter((ch)=> ch.type === "GUILD_TEXT" && ch.id !==
+                            guild.modlog_channel).forEach((ch) => { %>
+                            <option>#<%= ch.name %>
+                            </option>
+                            <% }); %>
+                              <option>No channel</option>
+                              <% } else { %>
+                                <option selected="selected">No channel</option>
+                                <% guild.channels.cache.filter((ch)=> ch.type === "GUILD_TEXT").forEach((ch) => { %>
+                                  <option>#<%= ch.name %>
+                                  </option>
+                                  <% }); %>
+                                    <% } %>
+                      </select>
+                    </div>
+                    <div class="mt-4">
+                      <button type="submit" name="automodUpdate"
+                        class="px-3 py-1 rounded-md bg-primary transition-opacity duration-300 hover:opacity-70">
+                        <i class="fa-solid fa-wrench"></i> Update
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </section>
+            <%- include('../includes/footer') %>
+        </div>
+    </div>
+  </body>
+
+</html>

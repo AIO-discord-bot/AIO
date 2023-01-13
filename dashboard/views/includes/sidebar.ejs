@@ -1,0 +1,63 @@
+<aside class="col-span-2 border-r border-white/10">
+  <section class="flex flex-col p-4 bg-darkerbggray h-full">
+    <h1 class="text-center mb-2 text-5xl font-bold aio-txt">A I O</h1>
+
+    <a href="/servers" class="bg-black/10 rounded-xl flex flex-row items-center p-4 my-4 shadow">
+      <img src="<%= guild.iconURL %>" class="rounded-full border-2 border-white" width="32" height="32" />
+      <h3 class="text-lg font-bold ml-2">
+        <%= guild.name %>
+      </h3>
+    </a>
+    <br>
+
+    <hr class="hr-manage">
+    <br>
+
+    <ul class="flex flex-col mt-4">
+      <li class="p-1 flex w-full">
+        <a href="/manage/<%= guild.id %>/basic"
+          class="<% if(currentURL.endsWith('basic')) { %> bg-white/5 font-semibold <% } else { %> bg-white/10 <% } %> w-full px-4 py-3 rounded font-sans">
+          <i class="fa-solid fa-shield-check mr-1 w-6"></i> <span>Management</span>
+        </a>
+      </li>
+      <br>
+      <br>
+
+      <hr class="hr-welcome">
+      <br>
+      <br>
+
+      <li class="p-1 flex w-full">
+        <a href="/manage/<%= guild.id %>/greeting"
+          class="<% if(currentURL.endsWith('greeting')) { %> bg-white/5 font-semibold <% } else { %> bg-white/10 <% } %> w-full px-4 py-3 rounded font-sans">
+          <i class="fa-solid fa-user-plus fa-sm mr-1 w-6"></i> <span>Greeting</span>
+        </a>
+      </li>
+      <br>
+      <br>
+      <hr class="hr-misc">
+      <br>
+      <br>
+      <li class="p-1 flex w-full">
+        <a href="/404"
+          class="<% if(currentURL.endsWith('embedBuilder')) { %> bg-white/5 font-semibold <% } else { %> bg-white/10 <% } %> w-full px-4 py-3 rounded font-sans">
+          <i class="fa fa-bars mr-1 w-6"></i>
+          <span>Embed Builder</span> <span class="beta">&nbsp&nbsp&nbspBETA&nbsp&nbsp&nbsp</span>&nbsp&nbsp<i
+            class="fa-solid fa-bug fa-lg"></i>
+        </a>
+      </li>
+      <li class=" p-1 flex w-full">
+        <a href="/manage/<%= guild.id %>/ticketpanels"
+          class="<% if(currentURL.endsWith('ticketpanels')) { %> bg-white/5 font-semibold <% } else { %> bg-white/10 <% } %> w-full px-4 py-3 rounded font-sans">
+          <i class="fa-solid fa-ticket mr-1 w-6"></i> <span>Ticket panels</span>
+        </a>
+      </li>
+      </li>
+    </ul>
+
+    </ul>
+    </ul>
+
+
+  </section>
+</aside>

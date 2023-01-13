@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<%- include('../includes/head') %>
+
+  <body class="bg-bggray text-gray-50 min-h-screen flex flex-col">
+	<header
+		class="bg-darkerbggray text-gray-50 flex flex-row items-center w-full justify-between px-4 md:px-24 lg:px-36 py-4">
+		<!-- Logo -->
+		<a href="/" class="aio-premium-logo font-bold"> A I O <span class="premium-superscript">P R E M I U M</span></a>
+
+		<nav class="flex items-center justify-end">
+			<a href="/logout" class="flex items-center">
+			<img src="<%= user.displayAvatar %>" width="40" height="40" class="rounded-full" alt="User Image" /><span
+				class="text-lg ml-2">
+				<btn class="btn-two">
+				<i class="fa-brands fa-discord"></i>
+				<%= user.username %>#<%= user.discriminator %>
+					
+				</btn>
+			</span>
+			</a>
+			<a href="/premium" class="flex items-center">
+				<span class="text-lg ml-2">
+					<btn
+					class="px-3 py-1 rounded-md flex-[1/2] mt-4 premiumButton transition-opacity duration-300 hover:opacity-70">
+					Premium <i class="fa-duotone fa-crown"></i>
+					</btn>
+				</span>
+				<div class="sc-hRwTwm jNwnxb">
+				</div>
+			</a>
+
+		</nav>
+	</header>
+	
+    <div class="table grid-cols-1 md:grid-cols-8 flex-1 align-middle text-center" style="height:100%;">
+	    <br>
+		<br>
+		<br>
+		<br>
+
+		<div class="max-w-max relative mx-auto md:px-12 pt-3">
+			<img src="/premium/assets/stars.svg" class="absolute mx-auto md:px-13 pointer-events-none" style="left:50%;width:50%;transform:translate(-50%,-25%);z-index:-1;opacity:0.7;">
+			<h1 class="premium-text text-white font-title font-bold md:text-[54px] !leading-tight text-center" style="z-index:11;font-size: 2.2em;">
+			Level up your server with AIO <span class="premium-superscript">Premium</span></h1>
+			<span>Coming Soon<sup>™</sup></span><br>
+		</div>
+        <br>
+		<br>
+
+		<div class="pricing-container"> 
+			<div class="pricing-item" id="month-1">
+				<h1>1 Month</h1>
+				<h3><span class="dollar">$3.99</span></h3>
+            
+				<ul class="list">
+					<li class="first"></li>
+					<li>0 Month+</li>
+					<li>Coming Soon</li>
+				</ul>
+				<a class="btn-holder flex items-center" onclick="purchaseModal()" >
+					<span class="text-lg ml-2">
+						<btn
+						class="px-3 py-1 rounded-md flex-[1/2] mt-4 purchaseButton transition-opacity duration-300 hover:opacity-70">
+						<i class="fa-solid fa-dollar-sign"></i> Purchase
+						</btn>
+				</a>
+			</div>
+			<div class="pricing-item bigBoi" id="month-6">
+				<div class="ribbon-holder">
+					<div class="ribbon">Best value</div>
+				</div>
+				<h1>6 Months</h1>
+				<h3><span class="dollar">$39.99</span></h3>
+				<ul class="list">
+					<li class="first">1 Month +</li>
+					
+					<li>Beta</span> Feature Access</li>
+				</ul>
+				<a class="btn-holder" onclick="purchaseModal()" class="flex items-center">
+					<span class="text-lg ml-2">
+						<btn
+						class="px-3 py-1 rounded-md flex-[1/2] mt-4 purchaseButton transition-opacity duration-300 hover:opacity-90">
+						<i class="fa-solid fa-dollar-sign"></i> Purchase
+						</btn>
+				</a>
+			</div>
+			<div class="pricing-item" id="year-1">
+				<h1>1 Year</h1>
+				<h3><span class="dollar">$99.99</span></h3>
+                
+                <br>
+				<ul class="list">
+					<li class="first">6 months +</li>
+					<li>Custom bot</li>
+				</ul>
+				<a class="btn-holder" onclick="purchaseModal()" class="flex items-center">
+					<span class="text-lg ml-2">
+						<btn
+						class="px-3 py-1 rounded-md flex-[1/2] mt-4 purchaseButton transition-opacity duration-300 hover:opacity-70">
+						<i class="fa-solid fa-dollar-sign"></i> Purchase
+						</btn>
+				</a>
+                
+			</div>
+		</div>
+        <br>
+        <br>
+        <br>
+		<div>
+			<p>Already have a key? Run <span class="slash-command">/redeem</span> in <span class="slash-command">@AIO's</span> DMs.</p>
+            <p>A key will always look like this - no different:</p>
+            <br>
+            <span class="key"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AIO-XXXXX-XXXXX-XXXXX&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code></span>
+		</div>
+	</div>
+
+</body>
+</html>

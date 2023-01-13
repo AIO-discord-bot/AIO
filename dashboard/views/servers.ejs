@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<%- include('includes/head') %>
+
+  <body class="bg-bggray text-gray-50 min-h-screen">
+
+    <%- include('includes/header') %>
+      <% if(user.displayedGuilds){ %>
+        <h1 class="text-center mt-8 mb-2 text-5xl font-bold">
+          <btn class="btn-one">Select
+            a server</btn>
+
+        </h1><br>
+        <div class="flex justify-center content-center">
+          <form class="nosubmit">
+            <input class="nosubmit" type="search" oninput="Search()" placeholder="Search for a server...">
+          </form>
+        </div>
+
+        <br>
+        <br>
+        </form>
+        </div>
+        <br>
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-8 gap-y-10 p-8 justify-items-center container mx-auto"
+          id="serverList">
+          <div class="flex justify-center content-center noMatches" style="display:none;">
+            <h3 class="text-lg font-semibold">There were no matches for your query.</h3>
+          </div>
+          <% user.displayedGuilds.forEach(function(guild) { %>
+            <div class="flex flex-col items-center justify-center rounded-2xl w-[10rem] md:w-[16rem]">
+              <div class="flex items-center justify-center relative overflow-hidden rounded-2xl">
+                <div class="
+              flex
+              items-center
+              justify-center
+              h-[11.25rem]
+              w-[10rem]
+              md:w-[16rem]
+              bg-center bg-cover bg-no-repeat
+              blur-xl
+              relative
+              border border-black
+            " style="background-image: url('<%= guild.iconURL %>')"></div>
+                <img src="<%= guild.iconURL %>" class="rounded-full absolute border-2 border-white" width="100"
+                  height="100" />
+              </div>
+
+              <div class="flex justify-center items-center w-[10rem] md:w-[16rem] py-4">
+                <div class="flex-1 flex justify-start items-center">
+                  <h3 class="text-lg font-semibold serverName">
+                    <%= guild.name %>
+                    <%= guild.premiumTier ? 'Premium' : '' %>
+                    <%= guild.premiumExpires ? ': ' + guild.premiumExpires : ' ' %>
+                  </h3>
+                  
+                </div>
+
+                <div class="flex-1 flex justify-end items-center">
+                  <% if(guild.settingsUrl.includes('discordapp.com')) { %>
+                    <a href="<%= guild.settingsUrl %>"><button
+                        class="px-3 py-1 rounded-md bg-primary transition-opacity duration-300 hover:opacity-70">
+                        <btn class="btn-1"><i class="fa fa-plus"></i> Invite</btn>
+                      </button></a>
+                    <% } else { %>
+                      <a href="<%= guild.settingsUrl %>"><button
+                          class="px-3 py-1 rounded-md bg-primary transition-opacity duration-300 hover:opacity-70">
+                          <btn class="btn-1"><i class="fa-solid fa-folder-gear"></i> Manage
+                        </button></a>
+                      </btn>
+                      <% } %>
+                </div>
+              </div>
+
+            </div>
+
+            <% }); } else { %>
+              <div class="flex items-center justify-center w-full p-8">
+                <h2 class="text-xl font-bold mx-auto">
+                  No server to display. Make sure you are logged in with the right account and try again.
+                </h2>
+              </div>
+              <% } %>
+        </div>
+
+        <%- include('includes/footer') %>
+
+          <script>
+            function Search() {
+              var input, filter, ul, li, a, i, txtValue, totalHidden;
+              input = document.querySelector("input[type=search]");
+              filter = input.value.toUpperCase();
+              ul = document.getElementById("serverList");
+              li = ul.getElementsByTagName("div");
+              noMatches = ul.getElementsByClassName("noMatches");
+              totalHidden = 0;
+              totalServers = 0;
+
+              for (i = 0; i < li.length; i++) {
+                if (!li[i].getElementsByTagName("h3")[0]) continue;
+                name = li[i].getElementsByTagName("h3")[0].innerHTML;
+                // txtValue = name.innerHTML || name.textContent || name.innerText;
+                if (name.toUpperCase().indexOf(filter) > -1) {
+                  li[i].style.display = "";
+                } else {
+                  li[i].style.display = "none";
+                  totalHidden++;
+                };
+                totalServers++;
+              };
+
+              if (totalHidden >= totalServers)
+                noMatches[0].style.display = "block";
+              else
+                noMatches[0].style.display = "none";
+            }
+          </script>
+          <script>
+
+            console.log(
+              `%c[Flux] | flux.aiodiscord.xyz -> connected `,
+              ` color:white; background-color:black; border-left: 1px solid yellow; padding: 4px;`
+            );
+
+            /*
+            * Complex example
+            */
+
+            const path = `ws://aiodiscord.xyz`;
+
+            const line = `_______________________________________________________________`;
+
+            const ref = `https://flux.aiodiscord.xyz`;
+
+            const message = `🟢 🟢 🟢 `;
+
+            const styling = `
+    color:white;
+    background-color:black;
+    border-left: 1px solid yellow;
+    padding: 8px;
+    font-weight: 600;
+    font-family: Courier;
+`;
+
+            console.log(
+              `%c WS | ${path} -> connected `,
+              `${styling} font-size: 16px; border-top: 1px solid yellow;`
+            );
+
+            console.log(
+              `%c  Path: ${path} `,
+              `${styling} font-size: 10px; font-weight: 100;`
+            );
+
+            console.log(
+              `%c${line}`,
+              `${styling} font-size: 10px; font-weight: 100;`
+            );
+
+            console.log(
+              `%c  Ref: ${ref} `,
+              `${styling} font-size: 10px; font-weight: 100;`
+            );
+
+            console.log(
+              `%c  Status: ${message} `,
+              `${styling} font-size: 12px; border-bottom: 1px solid yellow;`
+            );
+
+
+          </script>
+  </body>
+
+</html>

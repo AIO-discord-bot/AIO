@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<%- include('../includes/head') %>
+
+  <body class="bg-bggray text-gray-50 min-h-screen flex flex-col">
+    <div class="grid grid-cols-1 md:grid-cols-8 flex-1">
+      <%- include('../includes/sidebar') %>
+
+        <div class="flex flex-col col-span-6 container">
+          <%- include('../includes/manageheader') %>
+            <h2 class="text-3xl font-semibold mx-8 mt-6 mb-2"><code>Commands</code></h2>
+
+            <section class="grid grid-cols gap-4 my-4 mx-8">
+              <div class="flex flex-col rounded-lg bg-darkerbggray h-[fit-content]">
+                <div class="p-4">
+                  <h3 class="font-semibold text-xl">Commands Configuration</h3>
+                </div>
+                <form role="form" action="/manage/<%= guild.id %>/commands/" method="POST"
+                  class="flex flex-col px-4 pt-2 pb-4">
+                  <div class="grid grid-cols-4 gap-4">
+                    <% commands.map(command=> { %>
+                      <div class="flex flex-row items-center">
+                        <label class="switch">
+                          <% if(command.disabled) { %>
+                            <input type="checkbox" name="<%= command.name %>" />
+                            <% } else { %>
+                              <input type="checkbox" name="<%= command.name %>" checked />
+                              <% } %>
+                                <span class="slider round"></span>
+                        </label>
+                        <span class="ml-2">
+                          <%= command.name %>
+                        </span>
+                      </div>
+                      <% }) %>
+                  </div>
+                  <div class="mt-4">
+                    <button type="submit" name="commandsUpdate"
+                      class="px-3 py-1 rounded-md bg-primary transition-opacity duration-300 hover:opacity-70">
+                      Update
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </section>
+            <%- include('../includes/footer') %>
+        </div>
+    </div>
+  </body>
+
+</html>
