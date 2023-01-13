@@ -9,7 +9,7 @@ module.exports = {
     ENABLED: true, // Whether or not the bot should update its status
     STATUS: "online", // The bot's status [online, idle, dnd, invisible]
     TYPE: "PLAYING", // Status type for the bot [PLAYING | LISTENING | WATCHING | COMPETING]
-    MESSAGE: "AIO Test Development Bot, // Your bot status message
+    MESSAGE: "AIO Test Development Bot", // Your bot status message
   },
   DASHBOARD: {
     enabled: false, // enable or disable dashboard
