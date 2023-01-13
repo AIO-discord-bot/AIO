@@ -14,12 +14,6 @@ client.loadCommands("src/commands");
 client.loadContexts("src/contexts");
 client.loadEvents("src/events");
 
-const { AutoPoster } = require('topgg-autoposter')
-const poster = AutoPoster(process.env.TOP_GG_TOKEN, client)
-poster.on('posted', (stats) => {
-  console.log(chalk.green(`Posted stats to Top.gg | ${stats.serverCount} servers`))
-})
-
 // catch client errors and warnings
 client.on("error", (err) => client.logger.error(`Client Error`, err));
 client.on("warn", (message) => client.logger.warn(`Client Warning: ${message}`));
