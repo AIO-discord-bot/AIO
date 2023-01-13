@@ -7,7 +7,7 @@
   "license": "ISC",
   "scripts": {
     "dev": "nodemon .",
-    "test": "echo \"Test 🟢\" &amp;&amp; exit 1",
+    "test": "echo \"Test 🟢\" exit 1",
     "start": "node .",
     "tailwind:watch": "npx tailwindcss -i ./dashboard/public/styles/style.css -o ./dashboard/public/styles/tailwind.css --watch"
   },
