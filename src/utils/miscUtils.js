@@ -7,16 +7,7 @@ const LINK_PATTERN =
 const DISCORD_INVITE_PATTERN =
   /(https?:\/\/)?(www.)?(discord.(gg|io|me|li|link|plus)|discorda?p?p?.com\/invite|invite.gg|dsc.gg|urlcord.cf)\/[^\s/]+?(?=\b)/;
 
-const containsPremiumCode = 
- /([AIO]{3}-[a-zA-Z0]{4}-[a-zA-Z0]{4}-[a-zA-Z0]{4})/;
 
-/**
- * Checks if a string contains a URL
- * @param {string} text
- */
-function containsLink(text) {
-  return LINK_PATTERN.test(text);
-}
 
 /**
  * Checks if a string is a valid discord invite
