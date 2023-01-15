@@ -7,6 +7,9 @@ const LINK_PATTERN =
 const DISCORD_INVITE_PATTERN =
   /(https?:\/\/)?(www.)?(discord.(gg|io|me|li|link|plus)|discorda?p?p?.com\/invite|invite.gg|dsc.gg|urlcord.cf)\/[^\s/]+?(?=\b)/;
 
+const containsPremiumCode = 
+ /([AIO]{3}-[a-zA-Z0]{4}-[a-zA-Z0]{4}-[a-zA-Z0]{4})/;
+
 /**
  * Checks if a string contains a URL
  * @param {string} text
@@ -21,6 +24,13 @@ function containsLink(text) {
  */
 function containsDiscordInvite(text) {
   return DISCORD_INVITE_PATTERN.test(text);
+}
+
+/**
+ * @param {string} text
+  */
+function containsPremium(text) {
+  return containsPremiumCode.test(text);
 }
 
 /**
@@ -111,4 +121,5 @@ module.exports = {
   durationToMillis,
   getRemainingTime,
   getCountryFromFlag,
+  containsPremium
 };
