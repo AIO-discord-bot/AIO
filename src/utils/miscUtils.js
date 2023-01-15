@@ -17,12 +17,6 @@ function containsDiscordInvite(text) {
   return DISCORD_INVITE_PATTERN.test(text);
 }
 
-/**
- * @param {string} text
-  */
-function containsPremium(text) {
-  return containsPremiumCode.test(text);
-}
 
 /**
  * Returns a random number below a max
@@ -103,7 +97,6 @@ function getCountryFromFlag(emoji) {
 }
 
 module.exports = {
-  containsLink,
   containsDiscordInvite,
   getRandomInt,
   isHex,
@@ -112,5 +105,4 @@ module.exports = {
   durationToMillis,
   getRemainingTime,
   getCountryFromFlag,
-  containsPremium
 };
