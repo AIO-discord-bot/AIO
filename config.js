@@ -9,18 +9,18 @@ module.exports = {
     ENABLED: true, // Whether or not the bot should update its status
     STATUS: "online", // The bot's status [online, idle, dnd, invisible]
     TYPE: "PLAYING", // Status type for the bot [PLAYING | LISTENING | WATCHING | COMPETING]
-    MESSAGE: "🤔 | Ketchup was once sold as medicine", // Your bot status message
+    MESSAGE: "AIO Test Development Bot", // Your bot status message
   },
   DASHBOARD: {
-    enabled: true, // enable or disable dashboard
-    baseURL: "https://dashboard.aiodiscord.xyz/", // base url
-    failureURL: "https://dashboard.aiodiscord.xyz/servers", // failure redirect url
+    enabled: false, // enable or disable dashboard
+    baseURL: "http://localhost:8080", // base url
+    failureURL: "http://localhost:8080", // failure redirect url
     port: "8080"
   },
   INTERACTIONS: {
     SLASH: true, // Should the interactions be enabled
     CONTEXT: true, // Should contexts be enabled
-    GLOBAL: true, // Should the interactions be registered globally
+    GLOBAL: false, // Should the interactions be registered globally
     TEST_GUILD_ID: "", // Guild ID where the interactions should be registered. [** Test you commands here first **]
   },
   XP_SYSTEM: {
@@ -74,9 +74,9 @@ module.exports = {
   },
   /* Maximum number of keys that can be stored */
   CACHE_SIZE: {
-    GUILDS: 2500,
-    USERS: 10000,
-    MEMBERS: 10000,
+    GUILDS: 50,
+    USERS: 50,
+    MEMBERS: 50,
   },
   MESSAGES: {
     API_ERROR: "Unexpected Backend Error! Try again later or contact support server - Error code - x015234 ",
