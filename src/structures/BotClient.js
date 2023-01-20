@@ -56,14 +56,16 @@ module.exports = class BotClient extends Client {
     this.antiScamCache = new Collection();
     this.flagTranslateCache = new Collection();
 
-
-
-    this.giveawaysManager = new GiveawayManager(this);
-
-
     this.logger = logger;
   }
 
+  async initializeGiveaways() {
+    if (mongoose.connection.readyState != 1) // 1 is connected
+      this.logger.log(chalk.red(`GiveawayManager requires Database! Got connection state: ${mongoose.connection.readyState}`));
+    else
+      this.giveawaysManager = new GiveawayManager(this);
+    this.logger.success(chalk.green(`GiveawayManager: Initialized Giveaways!`));
+  }
 
   async initializeMongoose() {
     this.logger.log(chalk.yellow(`Connecting to MongoDb...`));

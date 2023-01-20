@@ -12,8 +12,8 @@ module.exports = {
     MESSAGE: "AIO Test Development Bot", // Your bot status message
   },
   DASHBOARD: {
-    enabled: false, // enable or disable dashboard
-    baseURL: "http://localhost:8080", // base url
+    enabled: true, // enable or disable dashboard
+    baseURL: "http://localhost:8080/", // base url
     failureURL: "http://localhost:8080", // failure redirect url
     port: "8080"
   },
@@ -46,7 +46,7 @@ module.exports = {
     DENIED_EMBED: "#ff0000",
   },
   IMAGE: {
-    BASE_API: "https://api.aiodiscord.xyz",
+    BASE_API: "https://api.aiobot.gg",
   },
 
 

@@ -39,11 +39,10 @@
       <br>
       <br>
       <li class="p-1 flex w-full">
-        <a href="/404"
-          class="<% if(currentURL.endsWith('embedBuilder')) { %> bg-white/5 font-semibold <% } else { %> bg-white/10 <% } %> w-full px-4 py-3 rounded font-sans">
+        <a href="/manage/<%= guild.id %>/embed"
+          class="<% if(currentURL.endsWith('embed')) { %> bg-white/5 font-semibold <% } else { %> bg-white/10 <% } %> w-full px-4 py-3 rounded font-sans">
           <i class="fa fa-bars mr-1 w-6"></i>
-          <span>Embed Builder</span> <span class="beta">&nbsp&nbsp&nbspBETA&nbsp&nbsp&nbsp</span>&nbsp&nbsp<i
-            class="fa-solid fa-bug fa-lg"></i>
+          <span>Embed Builder</span>
         </a>
       </li>
       <li class=" p-1 flex w-full">
