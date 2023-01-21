@@ -13,7 +13,7 @@ const shouldModerate = (message) => {
   const { member, guild, channel } = message;
 
   // Ignore Possible Guild Moderators
-  if (member.permissions.has(["KICK_MEMBERS", "BAN_MEMBERS", "MANAGE_GUILD"])) return false;
+  if(member.hasOwnProperty("permissions") && member.permissions.has(["KICK_MEMBERS", "BAN_MEMBERS", "MANAGE_GUILD"])) return false;
 
   // Ignore Possible Channel Moderators
   if (channel.permissionsFor(message.member).has("MANAGE_MESSAGES")) return false;

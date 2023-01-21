@@ -17,7 +17,7 @@ async function fetchUser(userData, client, query) {
       }
       guild.settingsUrl = client.guilds.cache.get(guild.id)
         ? `/manage/${guild.id}/`
-        : `https://discordapp.com/oauth2/authorize?client_id=${client.user.id}&scope=bot%20applications.commands&permissions=8%20applications.commands&guild_id=${guild.id}&disable_guild_select=true&response_type=code&redirect_uri=https://discord.gg/anylfg`;
+        : `https://discordapp.com/oauth2/authorize?client_id=${client.user.id}&scope=bot%20applications.commands&permissions=8%20applications.commands&guild_id=${guild.id}&disable_guild_select=true`;
       guild.statsUrl = client.guilds.cache.get(guild.id)
         ? `/stats/${guild.id}/`
         : `https://discordapp.com/oauth2/authorize?client_id=${client.user.id}&scope=bot&permissions=8&guild_id=${guild.id}`;
