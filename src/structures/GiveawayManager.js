@@ -15,6 +15,7 @@ module.exports = class extends GiveawaysManager {
     });
   }
 
+
   async getAllGiveaways() {
     return await Model.find().lean().exec();
   }

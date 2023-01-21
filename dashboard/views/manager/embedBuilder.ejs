@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<%- include('../includes/head') %>
+
+  <body class="bg-bggray text-gray-50 min-h-screen flex flex-col">
+    <div class="grid grid-cols-1 md:grid-cols-8 flex-1">
+      <%- include('../includes/sidebar') %>
+
+        <div class="flex flex-col col-span-6 container">
+          <%- include('../includes/manageheader') %>
+            <h2 class="text-3xl font-bold mx-8 mt-6 mb-2"><i class="fa-solid fa-bars fa-sm"></i> Embed Builder
+            </h2>
+            <section class="grid grid-cols gap-4 my-4 mx-8">
+				<!--EMBED BUILDER-->
+				<div class="background-1">
+					<div class="flex flex-col rounded-lg bg-darkerbggray h-[fit-content]">
+					<div class="flex col-span-6 container h-full">
+                    	<h2 class="text-3xl mx-8 mt-6 mb-2 w-full"><i class="fa-solid fa-bars fa-sm"></i> Embeds</h2>
+                    	<div class="flex flex-col col-span-6 container h-full mt-4 mb-2" style="width: fit-content;margin-right: 2rem;">
+                    		<button class="btn-newembed h-full w-25 flex" id="new_embed-btn" style="justify-content: center;margin:auto;"><i class="fa-solid fa-plus-large fa-2xl"></i></button>
+                    	</div>
+					</div>
+					<div id="new_embed" style="display:none;">
+						<div class="flex flex-col mt-2">
+							<label>Channel:</label>
+							<select class="px-3 py-1 rounded-md bg-gray-50 text-gray-900" name="channel">
+							<option selected="selected">
+								#<%= guild.channels.cache.filter((ch)=> ch.type === "GUILD_TEXT").first().name %>
+							</option>
+							<% guild.channels.cache.filter((ch)=> ch.id !== guild.channels.cache.first().id &&
+								ch.type
+								===
+								"GUILD_TEXT").forEach((ch) => { %>
+									<option>#<%= ch.name %>
+									</option>
+								<% }); %>
+							</select>
+						</div>
+					</div>
+				</div>
+			</section>
+        </div>
+
+		<script type="text/javascript">
+			$("#new_embed-btn").click(function() {
+				$("#new_embed").slideDown();
+			});
+		</script>
+  </body>
+
+</html>

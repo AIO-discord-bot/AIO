@@ -16,6 +16,7 @@ router.get("/premium", CheckAuth, async (req, res) => {
 
 
 
+
 router.get("/:serverID", CheckAuth, async (req, res) => {
   res.redirect(`/manage/${req.params.serverID}/basic`);
 });
@@ -63,6 +64,31 @@ router.get("/:serverID/greeting", CheckAuth, async (req, res) => {
   const guildInfos = await utils.fetchGuild(guild.id, req.client, req.user.guilds);
 
   res.render("manager/greeting", {
+    guild: guildInfos,
+    user: req.userInfos,
+    bot: req.client,
+    currentURL: `${req.client.config.DASHBOARD.baseURL}/${req.originalUrl}`,
+  });
+});
+
+router.get("/:serverID/embed", CheckAuth, async (req, res) => {
+  // Check if the user has the permissions to edit this guild
+  const guild = req.client.guilds.cache.get(req.params.serverID);
+  if (
+    !guild ||
+    !req.userInfos.displayedGuilds ||
+    !req.userInfos.displayedGuilds.find((g) => g.id === req.params.serverID)
+  ) {
+    return res.render("404", {
+      user: req.userInfos,
+      currentURL: `${req.client.config.DASHBOARD.baseURL}/${req.originalUrl}`,
+    });
+  }
+
+  // Fetch guild informations
+  const guildInfos = await utils.fetchGuild(guild.id, req.client, req.user.guilds);
+
+  res.render("manager/embedBuilder", {
     guild: guildInfos,
     user: req.userInfos,
     bot: req.client,

@@ -37,5 +37,6 @@ process.on("unhandledRejection", (err) => {
     }
   }
   await client.initializeMongoose();
+  await client.initializeGiveaways();
   await client.login(process.env.BOT_TOKEN);
 })();
