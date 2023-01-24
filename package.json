@@ -22,7 +22,7 @@
     "cookie-parser": "^1.4.6",
     "country-language": "^0.1.7",
     "discord-api-types": "^0.37.11",
-    "discord-backup": "^3.2.1",
+    "discord-backup": "^3.3.2",
     "discord-giveaways": "^5.2.2",
     "discord-logs": "^2.2.1",
     "discord.js": "^13.3.1",
