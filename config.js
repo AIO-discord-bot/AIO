@@ -9,12 +9,12 @@ module.exports = {
     ENABLED: true, // Whether or not the bot should update its status
     STATUS: "online", // The bot's status [online, idle, dnd, invisible]
     TYPE: "PLAYING", // Status type for the bot [PLAYING | LISTENING | WATCHING | COMPETING]
-    MESSAGE: "AIO Test Development Bot", // Your bot status message
+    MESSAGE: `Hello!`, // Your bot status message
   },
   DASHBOARD: {
     enabled: true, // enable or disable dashboard
-    baseURL: "http://localhost:8080/", // base url
-    failureURL: "http://localhost:8080", // failure redirect url
+    baseURL: "https://dashboard.aiobot.gg/", // base url
+    failureURL: "https://aiobot.gg/servers", // failure redirect url
     port: "8080"
   },
   INTERACTIONS: {
@@ -74,9 +74,9 @@ module.exports = {
   },
   /* Maximum number of keys that can be stored */
   CACHE_SIZE: {
-    GUILDS: 50,
-    USERS: 50,
-    MEMBERS: 50,
+    GUILDS: 800,
+    USERS: 500000,
+    MEMBERS: 500000,
   },
   MESSAGES: {
     API_ERROR: "Unexpected Backend Error! Try again later or contact support server - Error code - x015234 ",

@@ -154,7 +154,7 @@
                       </div>
                     </div>
 
-                    // add another class with the title "preview"
+                    
                     
                     <div class="mt-4">
                       <% if(guild.welcome.enabled){ %>
@@ -163,12 +163,12 @@
                           <i class="fa-light fa-toggle-off"></i> Disable Messages
                         </button>
                         <button type="submit" name="welcomeUpdate"
-                          class="px-3 py-1 rounded-md bg-primary transition-opacity duration-300 hover:opacity-70">
+                          class="px-3 py-1 rounded-md transition-opacity duration-300 hover:opacity-70">
                           Update
                         </button>
                         <% } else { %>
                           <button type="submit" name="welcomeEnable"
-                            class="px-3 py-1 rounded-md bg-primary transition-opacity duration-300 hover:opacity-70">
+                            class="btn-enable-msg px-3 py-1 rounded-md transition-opacity duration-300 hover:opacity-70">
                             <i class="fa-light fa-toggle-off"></i> Enable Message
                           </button>
                           <% } %>
@@ -234,7 +234,7 @@
                             width="20px" height="20px" style="display:inline-block;">
                           Inviter's Tag <span
                             class="module-req">(Module
-                            Required: Invites)
+                            Required: Invites)</span>
                         </p>
                         <p class="text-sm text-gray-400"><span class="text-red-300"><code>{invites}</code></span>
                           <img class="welcome-emoji"
