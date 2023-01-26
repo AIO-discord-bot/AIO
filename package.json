@@ -28,6 +28,7 @@
     "discord.js": "^13.3.1",
     "dotenv": "^10.0.0",
     "ejs": "^3.1.8",
+    "enhanced-ms": "^2.2.0",
     "erela.js": "^2.4.0",
     "erela.js-deezer": "^1.0.7",
     "erela.js-facebook": "^1.0.4",

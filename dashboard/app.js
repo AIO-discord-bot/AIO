@@ -75,5 +75,5 @@ module.exports.launch = async (client) => {
   });
 };
 
-console.log("Fast connect => ws://dashboard.aiodiscord.xyz")
+console.log("Fast connect => ws://dashboard.aiobot.gg")
 

@@ -78,7 +78,7 @@ input:checked+.slider:before {
 }
 
 .custom-checkbox {
-  @apply appearance-none relative bg-neutral-400 h-4 w-4 cursor-pointer transition-all rounded inline-flex text-center justify-center items-center checked: bg-primary checked: after: border-b-[4px] checked: after: border-white checked: after: border-r-[4px] checked: after: rotate-45 checked: after: rounded-sm after: h-5 after: w-3 after: scale-50 after: absolute after: text-xl after: text-white;
+  @apply appearance-none relative bg-neutral-400 h-4 w-4 cursor-pointer transition-all inline-flex text-center justify-center items-center checked: checked: after: border-b-[4px] checked: after: border-white checked: after: border-r-[4px] checked: after: rotate-45 checked: after: after: after: scale-50 after: after: text-xl after: text-white;
 }
 
 .vscomp-ele {

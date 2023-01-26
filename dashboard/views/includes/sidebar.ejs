@@ -15,8 +15,8 @@
 
     <ul class="flex flex-col mt-4">
       <li class="p-1 flex w-full">
-        <a href="/manage/<%= guild.id %>/basic"
-          class="<% if(currentURL.endsWith('basic')) { %> bg-white/5 font-semibold <% } else { %> bg-white/10 <% } %> w-full px-4 py-3 rounded font-sans">
+        <a href="/manage/<%= guild.id %>/management"
+          class="<% if(currentURL.endsWith('management')) { %> bg-white/5 font-semibold <% } else { %> bg-white/10 <% } %> w-full px-4 py-3 rounded font-sans">
           <i class="fa-solid fa-shield-check mr-1 w-6"></i> <span>Management</span>
         </a>
       </li>

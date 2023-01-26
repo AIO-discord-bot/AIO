@@ -1,8 +1,16 @@
-const { MessageEmbed } = require("discord.js");
-const { permissions, sendMessage, parsePermissions } = require("@utils/botUtils");
+const { permissions, sendMessage, parsePermissions } = require("@utils/botUtils")
 const { EMBED_COLORS, PREFIX, OWNER_IDS } = require("@root/config.js");
 const { timeformat } = require("@utils/miscUtils");
 const CommandCategory = require("./CommandCategory");
+const { getSettings } = require("@schemas/Guild");
+const {
+  MessageEmbed,
+  MessageActionRow,
+  MessageSelectMenu,
+  Message,
+  MessageButton,
+  CommandInteraction,
+} = require("discord.js");
 
 class Command {
   /**
@@ -18,7 +26,7 @@ class Command {
    */
 
   /**
-   * @typedef {"ADMIN"|"ANIME"|"AUTOMOD"|"ECONOMY"|"FUN"|"IMAGE"|"INFORMATION"|"INVITE"|"MODERATION"|"MUSIC"|"NONE"|"OWNER"|"SOCIAL"|"TICKET"|"UTILITY"} CommandCategory
+   * @typedef {"PREMIUM"|"ADMIN"|"ANIME"|"AUTOMOD"|"ECONOMY"|"FUN"|"IMAGE"|"INFORMATION"|"INVITE"|"MODERATION"|"NONE"|"OWNER"|"SOCIAL"|"TICKET"|"UTILITY"} CommandCategory
    */
 
   /**
@@ -64,6 +72,7 @@ class Command {
     this.botPermissions = data.botPermissions || [];
     this.userPermissions = data.userPermissions || [];
     this.validations = data.validations || [];
+  
 
     /**
      * @type {CommandInfo}
@@ -79,6 +88,7 @@ class Command {
         : true;
 
       this.command.aliases = data.command.aliases || [];
+      
       this.command.usage = data.command.usage || "";
       this.command.minArgsCount = data.command.minArgsCount || 0;
       this.command.subcommands = data.command.subcommands || [];
@@ -105,12 +115,37 @@ class Command {
     }
   }
 
+  createPremiumEmbed(message) {
+    let components = [];
+    components.push(
+      new MessageButton().setStyle("LINK").setLabel("Purchase Premium").setURL(`https://dashboard.aiobot.gg/purchase/${message.guild.id}`)
+    );
+
+    // let row = new MessageActionRow()
+    //   .addComponents(
+    //     new MessageSelectMenu()
+    //     .setCustomId("guild")
+    //     .setPlaceholder("Select a server to purchase premium for")
+    //   )
+    // let buttonsRow = new MessageActionRow().addComponents(components);
+    const commandPremium = new MessageEmbed()
+      .setTitle("This command is premium only!")
+      .setDescription(`You can purchase premium [here](https://dashboard.aiobot.gg/purchase/${message.guild.id}).`)
+      .setColor("RED")
+      .setImage("https://media.discordapp.net/attachments/998404091157946480/1051424926227255306/img-rounded.png?width=1102&height=676")
+      .setFooter({text: "Premium commands are only available on servers with premium enabled and are not available in DMs"})
+
+    // return [[commandPremium], buttonsRow];
+    return [[commandPremium], null];
+  }
+
   /**
    * Function that validates the message with the command options
    * @param {import('discord.js').Message} message
    * @param {string[]} args
    * @param {string} invoke
    * @param {string} prefix
+   * @param {string | promise<void> | [response : string, options : import('discord.js').MessageOptions]
    */
   async executeCommand(message, args, invoke, prefix) {
     if (!message.channel.permissionsFor(message.guild.me).has("SEND_MESSAGES")) return;
@@ -125,6 +160,18 @@ class Command {
     // Owner commands
     if (this.category === "OWNER" && !OWNER_IDS.includes(message.author.id)) {
       return message.reply("This command is only accessible to bot owners");
+    }
+
+  
+
+    // Premium commands
+    if (message.guild) {
+      const settings = await getSettings(message.guild);
+      if (this.category === "PREMIUM" && !settings.premium.enabled) {
+        const premiumStuff = this.createPremiumEmbed(message);
+        return message.reply ({ embeds: premiumStuff[0], components: premiumStuff[1] });
+      }
+      console.log(settings.premium)
     }
 
     // user permissions
@@ -188,6 +235,22 @@ class Command {
         ephemeral: true,
       });
     }
+
+    
+      
+    if (interaction.guild) {
+      const settings = await getSettings(interaction.guild);
+      if (this.category === "PREMIUM" && !settings.premium.enabled) {
+        const premiumStuff = this.createPremiumEmbed(interaction);
+        
+        return interaction.reply({
+          embeds: premiumStuff[0],
+          components: premiumStuff[1],
+          ephemeral: true,
+        });
+      }
+    }
+
 
     // user permissions
     if (interaction.member && this.userPermissions.length > 0) {

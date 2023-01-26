@@ -30,7 +30,7 @@
           </div>
           <% user.displayedGuilds.forEach(function(guild) { %>
             <div class="flex flex-col items-center justify-center rounded-2xl w-[10rem] md:w-[16rem]">
-              <div class="flex items-center justify-center relative overflow-hidden rounded-2xl">
+              <div class="flex items-center justify-center relative overflow-hidden rounded-2xl loading">
                 <div class="
               flex
               items-center
@@ -41,16 +41,15 @@
               bg-center bg-cover bg-no-repeat
               blur-xl
               relative
-              border border-black
-            " style="background-image: url('<%= guild.iconURL %>')"></div>
+              border border-black" style="background-image: url('<%= guild.iconURL %>')"></div>
                 <img src="<%= guild.iconURL %>" class="rounded-full absolute border-2 border-white" width="100"
                   height="100" />
               </div>
 
               <div class="flex justify-center items-center w-[10rem] md:w-[16rem] py-4">
-                <div class="flex-1 flex justify-start items-center">
+                <div class="flex-1 flex justify-start items-center loading">
                   <h3 class="text-lg font-semibold serverName">
-                    <%= guild.name %>
+                    <%= (guild.name.length > 19) ? (guild.name.substring(0,16) + "..." ) : guild.name %>
                     <%= guild.premiumTier ? 'Premium' : '' %>
                     <%= guild.premiumExpires ? ': ' + guild.premiumExpires : ' ' %>
                   </h3>
@@ -59,12 +58,12 @@
 
                 <div class="flex-1 flex justify-end items-center">
                   <% if(guild.settingsUrl.includes('discordapp.com')) { %>
-                    <a href="<%= guild.settingsUrl %>"><button
+                    <a href="<%= guild.settingsUrl %>" class="loading"><button
                         class="px-3 py-1 rounded-md bg-primary transition-opacity duration-300 hover:opacity-70">
                         <btn class="btn-1"><i class="fa fa-plus"></i> Invite</btn>
                       </button></a>
                     <% } else { %>
-                      <a href="<%= guild.settingsUrl %>"><button
+                      <a href="<%= guild.settingsUrl %>" class="loading"><button
                           class="px-3 py-1 rounded-md bg-primary transition-opacity duration-300 hover:opacity-70">
                           <btn class="btn-1"><i class="fa-solid fa-folder-gear"></i> Manage
                         </button></a>
@@ -119,7 +118,7 @@
           <script>
 
             console.log(
-              `%c[Flux] | flux.aiodiscord.xyz -> connected `,
+              `%c[Flux] | flux.aiobot.gg -> connected `,
               ` color:white; background-color:black; border-left: 1px solid yellow; padding: 4px;`
             );
 
@@ -127,11 +126,11 @@
             * Complex example
             */
 
-            const path = `ws://aiodiscord.xyz`;
+            const path = `ws://aiobot.gg`;
 
             const line = `_______________________________________________________________`;
 
-            const ref = `https://flux.aiodiscord.xyz`;
+            const ref = `https://flux.aiobot.gg`;
 
             const message = `🟢 🟢 🟢 `;
 
@@ -168,8 +167,6 @@
               `%c  Status: ${message} `,
               `${styling} font-size: 12px; border-bottom: 1px solid yellow;`
             );
-
-
           </script>
   </body>
 

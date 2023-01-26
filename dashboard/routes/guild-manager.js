@@ -18,10 +18,10 @@ router.get("/premium", CheckAuth, async (req, res) => {
 
 
 router.get("/:serverID", CheckAuth, async (req, res) => {
-  res.redirect(`/manage/${req.params.serverID}/basic`);
+  res.redirect(`/manage/${req.params.serverID}/management`);
 });
 
-router.get("/:serverID/basic", CheckAuth, async (req, res) => {
+router.get("/:serverID/management", CheckAuth, async (req, res) => {
   // Check if the user has the permissions to edit this guild
   const guild = req.client.guilds.cache.get(req.params.serverID);
   if (
@@ -154,7 +154,7 @@ router.get("/:serverID/ticketpanels", CheckAuth, async (req, res) => {
   });
 });
 
-router.post("/:serverID/basic", CheckAuth, async (req, res) => {
+router.post("/:serverID/management", CheckAuth, async (req, res) => {
   // Check if the user has the permissions to edit this guild
   const guild = req.client.guilds.cache.get(req.params.serverID);
   if (
@@ -171,7 +171,7 @@ router.post("/:serverID/basic", CheckAuth, async (req, res) => {
   const settings = await getSettings(guild);
   const data = req.body;
 
-  if (Object.prototype.hasOwnProperty.call(data, "basicUpdate")) {
+  if (Object.prototype.hasOwnProperty.call(data, "managementUpdate")) {
     if (data.prefix && data.prefix !== settings.prefix) {
       settings.prefix = data.prefix;
     }
@@ -251,7 +251,7 @@ router.post("/:serverID/basic", CheckAuth, async (req, res) => {
     }
   }
   await settings.save();
-  res.redirect(303, `/manage/${guild.id}/basic`);
+  res.redirect(303, `/manage/${guild.id}/management`);
 });
 
 router.post("/:serverID/greeting", CheckAuth, async (req, res) => {
