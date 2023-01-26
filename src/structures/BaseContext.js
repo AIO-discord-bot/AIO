@@ -1,4 +1,4 @@
-const { permissions, parsePermissions } = require("@utils/botUtils");
+const { permissions, parsePermissions } = require("@utils/botUtils")
 const { timeformat } = require("@utils/miscUtils");
 
 class BaseContext {

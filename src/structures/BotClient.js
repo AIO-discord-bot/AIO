@@ -186,6 +186,7 @@ module.exports = class BotClient extends Client {
         this.loadCommand(cmd);
       } catch (ex) {
         this.logger.error(chalk.red(`Failed to load ${file} Reason: ${ex.message}`));
+        console.log(ex);
       }
     });
     this.logger.success(chalk.green(`Loaded ${this.commands.length} commands`));

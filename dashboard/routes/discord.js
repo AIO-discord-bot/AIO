@@ -8,7 +8,7 @@ const fetch = require("node-fetch"),
 router.get("/login", async function (req, res) {
   if (!req.user || !req.user.id || !req.user.guilds) {
     return res.redirect(
-      `https://discord.com/api/oauth2/authorize?client_id=${req.client.user.id
+      `https://discordapp.com/api/oauth2/authorize?client_id=${req.client.user.id
       }&scope=identify%20guilds&response_type=code&redirect_uri=${encodeURIComponent(
         req.client.config.DASHBOARD.baseURL + "api/callback"
       )}&state=${req.query.state || "no"}`

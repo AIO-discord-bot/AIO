@@ -1,0 +1,111 @@
+09:53:53.223 INFO  [33mLoading commands...[39m 
+09:53:53.261 DEBUG [31mSkipping command muter. Disabled![39m 
+09:53:53.261 DEBUG [33mSkipping slash command muter. Disabled![39m 
+09:53:53.268 DEBUG [33mSkipping slash command avatar. Disabled![39m 
+09:53:53.269 DEBUG [33mSkipping slash command botinvite. Disabled![39m 
+09:53:53.272 DEBUG [33mSkipping slash command botstats. Disabled![39m 
+09:53:53.273 DEBUG [33mSkipping slash command channelinfo. Disabled![39m 
+09:53:53.274 DEBUG [33mSkipping slash command emojiinfo. Disabled![39m 
+09:53:53.275 DEBUG [33mSkipping slash command guildinfo. Disabled![39m 
+09:53:53.280 DEBUG [31mSkipping command bot. Disabled![39m 
+09:53:53.280 DEBUG [31mSkipping command info. Disabled![39m 
+09:53:53.281 DEBUG [33mSkipping slash command uptime. Disabled![39m 
+09:53:53.282 DEBUG [33mSkipping slash command userinfo. Disabled![39m 
+09:53:53.290 DEBUG [33mSkipping slash command deafen. Disabled![39m 
+09:53:53.291 DEBUG [33mSkipping slash command disconnect. Disabled![39m 
+09:53:53.292 DEBUG [33mSkipping slash command move. Disabled![39m 
+09:53:53.294 DEBUG [33mSkipping slash command clear. Disabled![39m 
+09:53:53.294 DEBUG [33mSkipping slash command clearattach. Disabled![39m 
+09:53:53.295 DEBUG [33mSkipping slash command clearbots. Disabled![39m 
+09:53:53.295 DEBUG [33mSkipping slash command clearlinks. Disabled![39m 
+09:53:53.296 DEBUG [33mSkipping slash command clearspecifiedmessage. Disabled![39m 
+09:53:53.296 DEBUG [33mSkipping slash command clearuser. Disabled![39m 
+09:53:53.298 DEBUG [31mSkipping command clear. Disabled![39m 
+09:53:53.298 DEBUG [31mSkipping command voice. Disabled![39m 
+09:53:53.299 DEBUG [33mSkipping slash command undeafen. Disabled![39m 
+09:53:53.300 DEBUG [33mSkipping slash command unmute. Disabled![39m 
+09:53:53.300 DEBUG [33mSkipping slash command vmute. Disabled![39m 
+09:53:53.301 DEBUG [33mSkipping slash command vunmute. Disabled![39m 
+09:53:53.303 DEBUG [33mSkipping slash command run_agregation_script.flp=1@migratefrom=5. Disabled![39m 
+09:53:53.304 DEBUG [33mSkipping slash command addpremium. Disabled![39m 
+09:53:53.310 DEBUG [33mSkipping slash command reload. Disabled![39m 
+09:53:53.310 DEBUG [33mSkipping slash command test. Disabled![39m 
+09:53:53.317 DEBUG [31mSkipping command backup. Disabled![39m 
+09:53:53.321 DEBUG [31mSkipping command button. Disabled![39m 
+09:53:53.327 INFO  [32mLoaded 86 commands[39m 
+09:53:53.328 INFO  [32mLoaded 67 slash commands[39m 
+09:53:53.328 INFO  [33mLoading contexts...[39m 
+09:53:53.330 INFO  [32mLoaded 2 USER contexts[39m 
+09:53:53.330 INFO  [32mLoaded 0 MESSAGE contexts[39m 
+09:53:53.331 INFO  [33mLoading events...[39m 
+09:53:53.344 INFO  [32mLoaded 15 events. Success (15) Failed (0)[39m 
+09:53:53.344 INFO  [32mValidating config.js and environment variables[39m 
+09:53:53.347 INFO  [33mConnecting to MongoDb...[39m 
+09:53:53.909 INFO  [32mMongoose: Database connection established [39m 
+09:53:53.911 INFO  [32mGiveawayManager: Initialized Giveaways![39m 
+09:54:29.878 INFO  [33mLoading commands...[39m 
+09:54:29.910 DEBUG [31mSkipping command muter. Disabled![39m 
+09:54:29.910 DEBUG [33mSkipping slash command muter. Disabled![39m 
+09:54:29.917 DEBUG [33mSkipping slash command avatar. Disabled![39m 
+09:54:29.918 DEBUG [33mSkipping slash command botinvite. Disabled![39m 
+09:54:29.921 DEBUG [33mSkipping slash command botstats. Disabled![39m 
+09:54:29.922 DEBUG [33mSkipping slash command channelinfo. Disabled![39m 
+09:54:29.922 DEBUG [33mSkipping slash command emojiinfo. Disabled![39m 
+09:54:29.924 DEBUG [33mSkipping slash command guildinfo. Disabled![39m 
+09:54:29.928 DEBUG [31mSkipping command bot. Disabled![39m 
+09:54:29.929 DEBUG [31mSkipping command info. Disabled![39m 
+09:54:29.930 DEBUG [33mSkipping slash command uptime. Disabled![39m 
+09:54:29.930 DEBUG [33mSkipping slash command userinfo. Disabled![39m 
+09:54:29.939 DEBUG [33mSkipping slash command deafen. Disabled![39m 
+09:54:29.940 DEBUG [33mSkipping slash command disconnect. Disabled![39m 
+09:54:29.941 DEBUG [33mSkipping slash command move. Disabled![39m 
+09:54:29.942 DEBUG [33mSkipping slash command clear. Disabled![39m 
+09:54:29.943 DEBUG [33mSkipping slash command clearattach. Disabled![39m 
+09:54:29.943 DEBUG [33mSkipping slash command clearbots. Disabled![39m 
+09:54:29.944 DEBUG [33mSkipping slash command clearlinks. Disabled![39m 
+09:54:29.944 DEBUG [33mSkipping slash command clearspecifiedmessage. Disabled![39m 
+09:54:29.945 DEBUG [33mSkipping slash command clearuser. Disabled![39m 
+09:54:29.946 DEBUG [31mSkipping command clear. Disabled![39m 
+09:54:29.947 DEBUG [31mSkipping command voice. Disabled![39m 
+09:54:29.948 DEBUG [33mSkipping slash command undeafen. Disabled![39m 
+09:54:29.948 DEBUG [33mSkipping slash command unmute. Disabled![39m 
+09:54:29.949 DEBUG [33mSkipping slash command vmute. Disabled![39m 
+09:54:29.949 DEBUG [33mSkipping slash command vunmute. Disabled![39m 
+09:54:29.951 DEBUG [33mSkipping slash command run_agregation_script.flp=1@migratefrom=5. Disabled![39m 
+09:54:29.952 DEBUG [33mSkipping slash command addpremium. Disabled![39m 
+09:54:29.958 DEBUG [33mSkipping slash command reload. Disabled![39m 
+09:54:29.958 DEBUG [33mSkipping slash command test. Disabled![39m 
+09:54:29.962 DEBUG [31mSkipping command backup. Disabled![39m 
+09:54:29.965 DEBUG [31mSkipping command button. Disabled![39m 
+09:54:29.971 INFO  [32mLoaded 86 commands[39m 
+09:54:29.972 INFO  [32mLoaded 67 slash commands[39m 
+09:54:29.972 INFO  [33mLoading contexts...[39m 
+09:54:29.974 INFO  [32mLoaded 2 USER contexts[39m 
+09:54:29.974 INFO  [32mLoaded 0 MESSAGE contexts[39m 
+09:54:29.975 INFO  [33mLoading events...[39m 
+09:54:29.988 INFO  [32mLoaded 15 events. Success (15) Failed (0)[39m 
+09:54:29.988 INFO  [32mValidating config.js and environment variables[39m 
+09:54:29.991 INFO  [33mLaunching dashboard[39m 
+09:54:30.342 INFO  [33mConnecting to MongoDb...[39m 
+09:54:30.346 INFO  Dashboard is listening on port 8080 
+09:54:46.643 ERROR Cannot read properties of null (reading 'id')
+{}
+TypeError: Cannot read properties of null (reading 'id')
+    at C:\Users\izzyx\Documents\AIO\dashboard\routes\discord.js:11:77
+    at Layer.handle [as handle_request] (C:\Users\izzyx\Documents\AIO\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\izzyx\Documents\AIO\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (C:\Users\izzyx\Documents\AIO\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (C:\Users\izzyx\Documents\AIO\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\izzyx\Documents\AIO\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\izzyx\Documents\AIO\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\izzyx\Documents\AIO\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\izzyx\Documents\AIO\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\izzyx\Documents\AIO\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (C:\Users\izzyx\Documents\AIO\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\izzyx\Documents\AIO\node_modules\express\lib\router\index.js:328:13)
+    at C:\Users\izzyx\Documents\AIO\node_modules\express\lib\router\index.js:286:9
+    at Function.process_params (C:\Users\izzyx\Documents\AIO\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\izzyx\Documents\AIO\node_modules\express\lib\router\index.js:280:10)
+    at C:\Users\izzyx\Documents\AIO\dashboard\app.js:50:7 
+09:55:00.765 INFO  [32mMongoose: Database connection established [39m 
+09:55:00.767 INFO  [32mGiveawayManager: Initialized Giveaways![39m 

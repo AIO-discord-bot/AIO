@@ -42,6 +42,10 @@ const Schema = mongoose.Schema({
             transactionAmount: {
                 type: String,
                 default: "None",
+            },
+            expiresAtTimestamp: {
+                type: String,
+                default: "None",
             }
         },
     },

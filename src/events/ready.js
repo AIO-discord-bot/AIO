@@ -3,6 +3,8 @@ const { cacheReactionRoles } = require("@schemas/Message");
 const { getSettings } = require("@schemas/Guild");
 const { updateCounterChannels } = require("@src/handlers/counter");
 const { PRESENCE } = require("@root/config");
+const { checkPremium } = require("@schemas/PremiumKeys");
+
 chalk = require("chalk")
 
 /**
@@ -43,6 +45,7 @@ module.exports = async (client) => {
   }
 
   setInterval(() => updateCounterChannels(client), 10 * 60 * 1000);
+  setInterval(() => checkPremium(client), 60 * 1000);
 };
 
 /**
