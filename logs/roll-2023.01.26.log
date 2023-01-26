@@ -109,3 +109,186 @@ TypeError: Cannot read properties of null (reading 'id')
     at C:\Users\izzyx\Documents\AIO\dashboard\app.js:50:7 
 09:55:00.765 INFO  [32mMongoose: Database connection established [39m 
 09:55:00.767 INFO  [32mGiveawayManager: Initialized Giveaways![39m 
+11:07:00.410 INFO  Loading commands... 
+11:07:00.455 DEBUG Skipping command muter. Disabled! 
+11:07:00.455 DEBUG Skipping slash command muter. Disabled! 
+11:07:00.466 DEBUG Skipping slash command avatar. Disabled! 
+11:07:00.467 DEBUG Skipping slash command botinvite. Disabled! 
+11:07:00.470 DEBUG Skipping slash command botstats. Disabled! 
+11:07:00.472 DEBUG Skipping slash command channelinfo. Disabled! 
+11:07:00.473 DEBUG Skipping slash command emojiinfo. Disabled! 
+11:07:00.477 DEBUG Skipping slash command guildinfo. Disabled! 
+11:07:00.510 DEBUG Skipping command bot. Disabled! 
+11:07:00.511 DEBUG Skipping command info. Disabled! 
+11:07:00.512 DEBUG Skipping slash command uptime. Disabled! 
+11:07:00.513 DEBUG Skipping slash command userinfo. Disabled! 
+11:07:00.533 DEBUG Skipping slash command deafen. Disabled! 
+11:07:00.535 DEBUG Skipping slash command disconnect. Disabled! 
+11:07:00.536 DEBUG Skipping slash command move. Disabled! 
+11:07:00.539 DEBUG Skipping slash command clear. Disabled! 
+11:07:00.540 DEBUG Skipping slash command clearattach. Disabled! 
+11:07:00.541 DEBUG Skipping slash command clearbots. Disabled! 
+11:07:00.541 DEBUG Skipping slash command clearlinks. Disabled! 
+11:07:00.542 DEBUG Skipping slash command clearspecifiedmessage. Disabled! 
+11:07:00.543 DEBUG Skipping slash command clearuser. Disabled! 
+11:07:00.545 DEBUG Skipping command clear. Disabled! 
+11:07:00.547 DEBUG Skipping command voice. Disabled! 
+11:07:00.548 DEBUG Skipping slash command undeafen. Disabled! 
+11:07:00.549 DEBUG Skipping slash command unmute. Disabled! 
+11:07:00.550 DEBUG Skipping slash command vmute. Disabled! 
+11:07:00.551 DEBUG Skipping slash command vunmute. Disabled! 
+11:07:00.554 DEBUG Skipping slash command run_agregation_script.flp=1@migratefrom=5. Disabled! 
+11:07:00.555 DEBUG Skipping slash command addpremium. Disabled! 
+11:07:00.559 ERROR Failed to load redeemKey.js Reason: Cannot find module 'enhanced-ms'
+Require stack:
+- /root/AIO/src/commands/owner/redeemKey.js
+- /root/AIO/src/structures/BotClient.js
+- /root/AIO/src/structures/index.js
+- /root/AIO/bot.js 
+11:07:00.566 DEBUG Skipping slash command reload. Disabled! 
+11:07:00.567 ERROR Failed to load test.js Reason: Cannot find module 'enhanced-ms'
+Require stack:
+- /root/AIO/src/commands/owner/test.js
+- /root/AIO/src/structures/BotClient.js
+- /root/AIO/src/structures/index.js
+- /root/AIO/bot.js 
+11:07:00.573 DEBUG Skipping command backup. Disabled! 
+11:07:00.578 DEBUG Skipping command button. Disabled! 
+11:07:00.580 DEBUG Skipping command darkbuild. Disabled! 
+11:07:00.581 DEBUG Skipping command embed. Disabled! 
+11:07:00.589 INFO  Loaded 84 commands 
+11:07:00.589 INFO  Loaded 68 slash commands 
+11:07:00.589 INFO  Loading contexts... 
+11:07:00.592 INFO  Loaded 2 USER contexts 
+11:07:00.592 INFO  Loaded 0 MESSAGE contexts 
+11:07:00.594 INFO  Loading events... 
+11:07:00.615 INFO  Loaded 15 events. Success (15) Failed (0) 
+11:07:00.615 INFO  Validating config.js and environment variables 
+11:07:00.623 INFO  Launching dashboard 
+11:07:00.940 INFO  Connecting to MongoDb... 
+11:07:01.026 INFO  Dashboard is listening on port 8080 
+11:07:01.069 INFO  Mongoose: Database connection established  
+11:07:01.072 INFO  GiveawayManager: Initialized Giveaways! 
+11:07:01.561 INFO  [31mGuild Left: undefined Members: undefined[39m 
+11:17:41.556 INFO  Loading commands... 
+11:17:41.606 DEBUG Skipping command muter. Disabled! 
+11:17:41.606 DEBUG Skipping slash command muter. Disabled! 
+11:17:41.614 DEBUG Skipping slash command avatar. Disabled! 
+11:17:41.615 DEBUG Skipping slash command botinvite. Disabled! 
+11:17:41.618 DEBUG Skipping slash command botstats. Disabled! 
+11:17:41.619 DEBUG Skipping slash command channelinfo. Disabled! 
+11:17:41.621 DEBUG Skipping slash command emojiinfo. Disabled! 
+11:17:41.622 DEBUG Skipping slash command guildinfo. Disabled! 
+11:17:41.641 DEBUG Skipping command bot. Disabled! 
+11:17:41.642 DEBUG Skipping command info. Disabled! 
+11:17:41.643 DEBUG Skipping slash command uptime. Disabled! 
+11:17:41.644 DEBUG Skipping slash command userinfo. Disabled! 
+11:17:41.655 DEBUG Skipping slash command deafen. Disabled! 
+11:17:41.656 DEBUG Skipping slash command disconnect. Disabled! 
+11:17:41.658 DEBUG Skipping slash command move. Disabled! 
+11:17:41.660 DEBUG Skipping slash command clear. Disabled! 
+11:17:41.661 DEBUG Skipping slash command clearattach. Disabled! 
+11:17:41.662 DEBUG Skipping slash command clearbots. Disabled! 
+11:17:41.662 DEBUG Skipping slash command clearlinks. Disabled! 
+11:17:41.663 DEBUG Skipping slash command clearspecifiedmessage. Disabled! 
+11:17:41.664 DEBUG Skipping slash command clearuser. Disabled! 
+11:17:41.666 DEBUG Skipping command clear. Disabled! 
+11:17:41.668 DEBUG Skipping command voice. Disabled! 
+11:17:41.669 DEBUG Skipping slash command undeafen. Disabled! 
+11:17:41.670 DEBUG Skipping slash command unmute. Disabled! 
+11:17:41.671 DEBUG Skipping slash command vmute. Disabled! 
+11:17:41.672 DEBUG Skipping slash command vunmute. Disabled! 
+11:17:41.674 DEBUG Skipping slash command run_agregation_script.flp=1@migratefrom=5. Disabled! 
+11:17:41.676 DEBUG Skipping slash command addpremium. Disabled! 
+11:17:41.685 ERROR Failed to load redeemKey.js Reason: Cannot find module 'enhanced-ms'
+Require stack:
+- /root/AIO/src/commands/owner/redeemKey.js
+- /root/AIO/src/structures/BotClient.js
+- /root/AIO/src/structures/index.js
+- /root/AIO/bot.js 
+11:17:41.692 DEBUG Skipping slash command reload. Disabled! 
+11:17:41.693 ERROR Failed to load test.js Reason: Cannot find module 'enhanced-ms'
+Require stack:
+- /root/AIO/src/commands/owner/test.js
+- /root/AIO/src/structures/BotClient.js
+- /root/AIO/src/structures/index.js
+- /root/AIO/bot.js 
+11:17:41.697 DEBUG Skipping command backup. Disabled! 
+11:17:41.701 DEBUG Skipping command button. Disabled! 
+11:17:41.702 DEBUG Skipping command darkbuild. Disabled! 
+11:17:41.703 DEBUG Skipping command embed. Disabled! 
+11:17:41.708 INFO  Loaded 84 commands 
+11:17:41.708 INFO  Loaded 68 slash commands 
+11:17:41.708 INFO  Loading contexts... 
+11:17:41.710 INFO  Loaded 2 USER contexts 
+11:17:41.710 INFO  Loaded 0 MESSAGE contexts 
+11:17:41.711 INFO  Loading events... 
+11:17:41.724 INFO  Loaded 15 events. Success (15) Failed (0) 
+11:17:41.724 INFO  Validating config.js and environment variables 
+11:17:41.729 INFO  Launching dashboard 
+11:17:42.014 INFO  Connecting to MongoDb... 
+11:17:42.079 INFO  Dashboard is listening on port 8080 
+11:17:42.122 INFO  Mongoose: Database connection established  
+11:17:42.126 INFO  GiveawayManager: Initialized Giveaways! 
+11:17:42.530 INFO  [31mGuild Left: undefined Members: undefined[39m 
+11:22:31.257 INFO  Loading commands... 
+11:22:31.303 DEBUG Skipping command muter. Disabled! 
+11:22:31.303 DEBUG Skipping slash command muter. Disabled! 
+11:22:31.313 DEBUG Skipping slash command avatar. Disabled! 
+11:22:31.314 DEBUG Skipping slash command botinvite. Disabled! 
+11:22:31.317 DEBUG Skipping slash command botstats. Disabled! 
+11:22:31.319 DEBUG Skipping slash command channelinfo. Disabled! 
+11:22:31.320 DEBUG Skipping slash command emojiinfo. Disabled! 
+11:22:31.322 DEBUG Skipping slash command guildinfo. Disabled! 
+11:22:31.336 DEBUG Skipping command bot. Disabled! 
+11:22:31.337 DEBUG Skipping command info. Disabled! 
+11:22:31.338 DEBUG Skipping slash command uptime. Disabled! 
+11:22:31.339 DEBUG Skipping slash command userinfo. Disabled! 
+11:22:31.363 DEBUG Skipping slash command deafen. Disabled! 
+11:22:31.364 DEBUG Skipping slash command disconnect. Disabled! 
+11:22:31.366 DEBUG Skipping slash command move. Disabled! 
+11:22:31.369 DEBUG Skipping slash command clear. Disabled! 
+11:22:31.370 DEBUG Skipping slash command clearattach. Disabled! 
+11:22:31.370 DEBUG Skipping slash command clearbots. Disabled! 
+11:22:31.371 DEBUG Skipping slash command clearlinks. Disabled! 
+11:22:31.372 DEBUG Skipping slash command clearspecifiedmessage. Disabled! 
+11:22:31.373 DEBUG Skipping slash command clearuser. Disabled! 
+11:22:31.375 DEBUG Skipping command clear. Disabled! 
+11:22:31.377 DEBUG Skipping command voice. Disabled! 
+11:22:31.378 DEBUG Skipping slash command undeafen. Disabled! 
+11:22:31.379 DEBUG Skipping slash command unmute. Disabled! 
+11:22:31.380 DEBUG Skipping slash command vmute. Disabled! 
+11:22:31.381 DEBUG Skipping slash command vunmute. Disabled! 
+11:22:31.384 DEBUG Skipping slash command run_agregation_script.flp=1@migratefrom=5. Disabled! 
+11:22:31.385 DEBUG Skipping slash command addpremium. Disabled! 
+11:22:31.388 ERROR Failed to load redeemKey.js Reason: Cannot find module 'enhanced-ms'
+Require stack:
+- /root/AIO/src/commands/owner/redeemKey.js
+- /root/AIO/src/structures/BotClient.js
+- /root/AIO/src/structures/index.js
+- /root/AIO/bot.js 
+11:22:31.396 DEBUG Skipping slash command reload. Disabled! 
+11:22:31.397 ERROR Failed to load test.js Reason: Cannot find module 'enhanced-ms'
+Require stack:
+- /root/AIO/src/commands/owner/test.js
+- /root/AIO/src/structures/BotClient.js
+- /root/AIO/src/structures/index.js
+- /root/AIO/bot.js 
+11:22:31.402 DEBUG Skipping command backup. Disabled! 
+11:22:31.408 DEBUG Skipping command button. Disabled! 
+11:22:31.410 DEBUG Skipping command darkbuild. Disabled! 
+11:22:31.411 DEBUG Skipping command embed. Disabled! 
+11:22:31.418 INFO  Loaded 84 commands 
+11:22:31.418 INFO  Loaded 68 slash commands 
+11:22:31.418 INFO  Loading contexts... 
+11:22:31.420 INFO  Loaded 2 USER contexts 
+11:22:31.421 INFO  Loaded 0 MESSAGE contexts 
+11:22:31.422 INFO  Loading events... 
+11:22:31.438 INFO  Loaded 15 events. Success (15) Failed (0) 
+11:22:31.438 INFO  Validating config.js and environment variables 
+11:22:31.444 INFO  Launching dashboard 
+11:22:31.750 INFO  Connecting to MongoDb... 
+11:22:31.836 INFO  Dashboard is listening on port 8080 
+11:22:31.878 INFO  Mongoose: Database connection established  
+11:22:31.882 INFO  GiveawayManager: Initialized Giveaways! 
+11:22:32.568 INFO  [31mGuild Left: undefined Members: undefined[39m 

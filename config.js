@@ -2,8 +2,6 @@ module.exports = {
   OWNER_IDS: ["658441101861978151", "222073294419918848"], // Bot owner ID's
   PREFIX: "!", // Default prefix for the bot
 
-  SUPPORT_SERVER: "https://discord.gg/us46reuQR3", // Your bot support serve
-
   SUPPORT_SERVER: "https://discord.gg/us46reuQR3", // Your bot support server
   PRESENCE: {
     ENABLED: true, // Whether or not the bot should update its status

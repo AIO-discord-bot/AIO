@@ -230,7 +230,7 @@ module.exports = class Welcome extends Command {
    */
   async interactionRun(interaction, data) {
     const sub = interaction.options.getSubcommand();
-    const settings = data.settings;
+    const settings = data.getSettings();
 
     let response;
     switch (sub) {

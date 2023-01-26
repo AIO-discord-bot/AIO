@@ -1,3 +1,4 @@
+
 const { Command } = require("@src/structures");
 const { MessageEmbed, Message, MessageActionRow, MessageButton } = require("discord.js");
 const { SUPPORT_SERVER, DASHBOARD } = require("@root/config");

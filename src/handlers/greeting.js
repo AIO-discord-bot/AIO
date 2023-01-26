@@ -1,7 +1,8 @@
-const { MessageEmbed } = require("discord.js");
+const { MessageEmbed, MessageAttachment} = require("discord.js");
 const { getSettings } = require("@schemas/Guild");
 const { sendMessage } = require("@utils/botUtils");
 const { getBuffer } = require("@utils/httpUtils");
+const { IMAGE } = require("@root/config");
 
 /**
  * @param {string} content
@@ -10,6 +11,8 @@ const { getBuffer } = require("@utils/httpUtils");
  */
 const parse = async (content, member, inviterData = {}) => {
   const inviteData = {};
+
+
 
   const getEffectiveInvites = (inviteData = {}) =>
     inviteData.tracked + inviteData.added - inviteData.fake - inviteData.left || 0;
@@ -35,8 +38,10 @@ const parse = async (content, member, inviterData = {}) => {
     .replaceAll(/{inviter.name}/g, inviteData.name)
     .replaceAll(/{inviter.tag}/g, inviteData.tag)
     .replaceAll(/{invites}/g, getEffectiveInvites(inviterData.invite_data))
-    .replaceAll(/{time}/g, new Date().toLocaleString());
+    .replaceAll(/{time}/g, new Date().toLocaleString())
+    .replaceAll(/{newline}/g, "\n");
 };
+
 
 /**
  * @param {import('discord.js').GuildMember} member
@@ -45,8 +50,23 @@ const parse = async (content, member, inviterData = {}) => {
  * @param {Object} inviterData
  */
 const buildGreeting = async (member, type, config, inviterData) => {
+
+  const url = new URL(`${IMAGE.BASE_API}/utils/welcome-card`);
+  url.searchParams.append("image", member.displayAvatarURL({ format: "png", size: 128 }));
+  url.searchParams.append("name", member.displayName);
+  url.searchParams.append("discriminator", member.user.discriminator);
+  url.searchParams.append("count", member.guild.memberCount);
+  url.searchParams.append("guild", member.guild.name);
+
+  const response = await getBuffer(url.href);
+  if (!response.success) return "Failed to generate welcomecard image. Please try again later.";
+  const attachment = new MessageAttachment(response.buffer, "welcome.png");
+
+  
   if (!config) return;
   let content;
+
+  
 
   // build content
   if (config.content) content = await parse(config.content, member, inviterData);
@@ -69,7 +89,7 @@ const buildGreeting = async (member, type, config, inviterData) => {
     return { content };
   }
 
-  return { content, embeds: [embed] };
+  return { content, embeds: [embed] , files: [attachment]};
 };
 
 /**
