@@ -134,9 +134,9 @@ async function getHelpMenu({ client, guild }) {
       "**About Me:**\n" +
       `👋 Hello I am AIO!\n` +
       "I am a Multifunctional bot made by my creator River#0003\n" +
-      `My prefix is \`!\` **or** \`/\` to use slash commands!\n\n **Help:** Support Server: discord.gg/verifiedbot [Click Here](https://discord.gg/verifiedbot)\n`+
+      `My prefix is \`!\` **or** \`/\` to use slash commands!\n\n **Help:** Support Server: [Click Here](https://discord.gg/us46reuQR3)\n`+
       `<a:winnings:998419174718185512> Upvote us on [top.gg | Click Here](https://top.gg/bot/774714577732239421/vote)\n` +
-      `<a:ServerVerifiedGrey:998404067544023172> Review us [here | Click Here](https://top.gg/bot/774714577732239421#reviews)`)
+      `<a:ServerVerifiedGrey:998404067544023172> Review us [here | Click Here](https://top.gg/bot/774714577732239421#reviews)\n <:twitter:1068523961803088092> [Twitter | Status Updates](https://twitter.com/aio_tch) <:verified:1068542383840567336> `)
     .setFooter({text: "AIO | Help Menu | [1/1]"})
 
 
