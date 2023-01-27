@@ -292,3 +292,11 @@ Require stack:
 11:22:31.878 INFO  Mongoose: Database connection established  
 11:22:31.882 INFO  GiveawayManager: Initialized Giveaways! 
 11:22:32.568 INFO  [31mGuild Left: undefined Members: undefined[39m 
+16:00:27.176 ERROR Cannot read properties of null (reading 'has')
+{}
+TypeError: Cannot read properties of null (reading 'has')
+    at shouldModerate (/root/AIO/src/handlers/automod.js:19:45)
+    at Object.performAutomod (/root/AIO/src/handlers/automod.js:31:26)
+    at module.exports (/root/AIO/src/events/message/messageCreate.js:34:26)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5) 
+
