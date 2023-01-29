@@ -75,6 +75,8 @@ const buildGreeting = async (member, type, config, inviterData) => {
   const embed = new MessageEmbed();
   if (config.embed.description) embed.setDescription(await parse(config.embed.description, member, inviterData));
   if (config.embed.color) embed.setColor(config.embed.color);
+  embed.attachFile(attachment);
+  embed.setImage("attachemt://welcome.png")
   if (config.embed.thumbnail) embed.setThumbnail(member.user.displayAvatarURL());
   if (config.embed.footer) {
     embed.setFooter(await parse(config.embed.footer, member, inviterData));
