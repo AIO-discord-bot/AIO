@@ -17,7 +17,7 @@
     "@vitalets/google-translate-api": "^9.1.0",
     "ascii-table": "0.0.9",
     "btoa": "^1.2.1",
-    "chalk": "^5.2.0",
+    "chalk": "^4.1.2",
     "connect-mongo": "^4.6.0",
     "cookie-parser": "^1.4.6",
     "country-language": "^0.1.7",
@@ -61,6 +61,7 @@
     "uuidv4": "^6.2.13"
   },
   "devDependencies": {
+    "@types/module-alias": "^2.0.1",
     "eslint": "^7.32.0",
     "eslint-plugin-jsdoc": "^36.0.8",
     "node": "^16.10.0",
