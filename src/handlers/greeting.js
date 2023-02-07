@@ -51,16 +51,15 @@ const parse = async (content, member, inviterData = {}) => {
  */
 const buildGreeting = async (member, type, config, inviterData) => {
 
-  const url = new URL(`${IMAGE.BASE_API}/utils/welcome-card`);
-  url.searchParams.append("image", member.displayAvatarURL({ format: "png", size: 128 }));
-  url.searchParams.append("name", member.displayName);
-  url.searchParams.append("discriminator", member.user.discriminator);
- //  url.searchParams.append("count", member.guild.memberCount);
-  url.searchParams.append("guild", member.guild.name);
-  console.log(url.href);
+const url = new URL(`${IMAGE.BASE_API}/utils/welcome-card`);
+ url.searchParams.append("image", member.displayAvatarURL({ format: "png", size: 128 }));
+ url.searchParams.append("name", member.displayName);
+ url.searchParams.append("discriminator", member.user.discriminator);
+ url.searchParams.append("count", member.guild.memberCount);
+ url.searchParams.append("guild", member.guild.name);
 
-  const response = await getBuffer(url.href);
-  if (!response.success) return "Failed to generate welcomecard image. Please try again later.";
+   const response = await getBuffer(url.href);
+   if (!response.success) return "Failed to generate welcomecard image. Please try again later.";
   const attachment = new MessageAttachment(response.buffer, "welcome.png");
 
   
@@ -69,16 +68,17 @@ const buildGreeting = async (member, type, config, inviterData) => {
 
   
 
-  // build content
+   // build content
   if (config.content) content = await parse(config.content, member, inviterData);
 
   // build embed
-  const welcomembed = {};
-  if (config.embed.description) welcomembed.description = await parse(config.embed.description, member, inviterData);
-  if (config.embed.color) welcomembed.color = config.embed.color;
-  welcomembed.image = { url: url.href };
-  if (config.embed.thumbnail) welcomembed.thumbnail = { url: member.user.displayAvatarURL() };
-  if (config.embed.footer) { welcomembed.footer = { text: await parse(config.embed.footer, member, inviterData) }; }
+  const embed = new MessageEmbed();
+  if (config.embed.description) embed.setDescription(await parse(config.embed.description, member, inviterData));
+  if (config.embed.color) embed.setColor(config.embed.color);
+  if (config.embed.thumbnail) embed.setThumbnail(member.user.displayAvatarURL());
+  if (config.embed.footer) {
+    embed.setFooter(await parse(config.embed.footer, member, inviterData));
+  }
 
   // set default message
   if (!config.content && !config.embed.description && !config.embed.footer) {
@@ -89,7 +89,7 @@ const buildGreeting = async (member, type, config, inviterData) => {
     return { content };
   }
 
-  return { content, embeds: [welcomembed] , files: [attachment]};
+  return { content, embeds: [embed], files: [attachment] };
 };
 
 /**

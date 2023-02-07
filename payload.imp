@@ -1,1 +1,7 @@
-----
+impl::payload.Str() == `IMPL PAYLOAD 1.<@impl(hypervisor)>`
+
+assert impl::payload.Str() == `IMPL PAYLOAD 2.<@impl(hypervisor)>`
+
+hypervisor.up( impl::payload ) <::impl <connecton>Sub(?)>
+
+

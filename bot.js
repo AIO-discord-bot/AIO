@@ -1,7 +1,6 @@
 require("dotenv").config();
 require("module-alias/register");
-chalk = require("chalk")
-
+const chalk = require("chalk")
 const path = require("path");
 const { startupCheck } = require("@utils/botUtils");
 const { BotClient } = require("@src/structures");
@@ -24,6 +23,7 @@ process.on("unhandledRejection", (err) => {
   console.error(err);
   client.logger.error(`Unhandled exception`, err);
 });
+
 
 (async () => {
   await startupCheck();
