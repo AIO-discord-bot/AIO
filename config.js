@@ -11,8 +11,8 @@ module.exports = {
   },
   DASHBOARD: {
     enabled: true, // enable or disable dashboard
-    baseURL: "https://dashboard.aiobot.gg/", // base url
-    failureURL: "https://aiobot.gg/servers", // failure redirect url
+    baseURL: "http://localhost:8080/", // base url
+    failureURL: "http://localhost:8080/servers", // failure redirect url
     port: "8080"
   },
   INTERACTIONS: {

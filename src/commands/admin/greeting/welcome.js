@@ -1,3 +1,4 @@
+
 const { Command } = require("@src/structures");
 const { isHex } = require("@utils/miscUtils");
 const { buildGreeting } = require("@src/handlers/greeting");
@@ -230,7 +231,7 @@ module.exports = class Welcome extends Command {
    */
   async interactionRun(interaction, data) {
     const sub = interaction.options.getSubcommand();
-    const settings = data.getSettings();
+    const settings = await getSettings(interaction.guild);
 
     let response;
     switch (sub) {

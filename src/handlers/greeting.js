@@ -55,8 +55,9 @@ const buildGreeting = async (member, type, config, inviterData) => {
   url.searchParams.append("image", member.displayAvatarURL({ format: "png", size: 128 }));
   url.searchParams.append("name", member.displayName);
   url.searchParams.append("discriminator", member.user.discriminator);
-  url.searchParams.append("count", member.guild.memberCount);
+ //  url.searchParams.append("count", member.guild.memberCount);
   url.searchParams.append("guild", member.guild.name);
+  console.log(url.href);
 
   const response = await getBuffer(url.href);
   if (!response.success) return "Failed to generate welcomecard image. Please try again later.";
@@ -72,15 +73,12 @@ const buildGreeting = async (member, type, config, inviterData) => {
   if (config.content) content = await parse(config.content, member, inviterData);
 
   // build embed
-  const embed = new MessageEmbed();
-  if (config.embed.description) embed.setDescription(await parse(config.embed.description, member, inviterData));
-  if (config.embed.color) embed.setColor(config.embed.color);
-  embed.attachFile(attachment);
-  embed.setImage("attachemt://welcome.png")
-  if (config.embed.thumbnail) embed.setThumbnail(member.user.displayAvatarURL());
-  if (config.embed.footer) {
-    embed.setFooter(await parse(config.embed.footer, member, inviterData));
-  }
+  const welcomembed = {};
+  if (config.embed.description) welcomembed.description = await parse(config.embed.description, member, inviterData);
+  if (config.embed.color) welcomembed.color = config.embed.color;
+  welcomembed.image = { url: url.href };
+  if (config.embed.thumbnail) welcomembed.thumbnail = { url: member.user.displayAvatarURL() };
+  if (config.embed.footer) { welcomembed.footer = { text: await parse(config.embed.footer, member, inviterData) }; }
 
   // set default message
   if (!config.content && !config.embed.description && !config.embed.footer) {
@@ -91,7 +89,7 @@ const buildGreeting = async (member, type, config, inviterData) => {
     return { content };
   }
 
-  return { content, embeds: [embed] , files: [attachment]};
+  return { content, embeds: [welcomembed] , files: [attachment]};
 };
 
 /**

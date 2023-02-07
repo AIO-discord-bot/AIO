@@ -70,7 +70,7 @@ async function beg(user) {
 
   let amount = Math.floor(Math.random() * `${ECONOMY.MAX_BEG_AMOUNT}` + `${ECONOMY.MIN_BEG_AMOUNT}`);
   const userDb = await getUser(user.id);
-  userDb.coins += amount;
+  userDb.coins = userDb.coins ? (userDb.coins + amount) : amount;
   await userDb.save();
 
   const embed = new MessageEmbed()
