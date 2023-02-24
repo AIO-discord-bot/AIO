@@ -113,6 +113,56 @@ async function sendWelcome(member, inviterData = {}) {
 
 
 /**
+ * @param {import('discord.js').GuildMember} member
+ * @param {"WELCOME"|"FAREWELL"} type
+ * @param {Object} config
+ * @param {Object} inviterData
+ */
+
+const buildFarewell = async (member, type, config, inviterData) => {
+
+  const url = new URL(`${IMAGE.BASE_API}/utils/farewell-card`);
+  url.searchParams.append("image", member.displayAvatarURL({ format: "png", size: 128 }));
+  url.searchParams.append("name", member.displayName);
+  url.searchParams.append("discriminator", member.user.discriminator);
+  url.searchParams.append("count", member.guild.memberCount);
+  url.searchParams.append("guild", member.guild.name);
+
+   const response = await getBuffer(url.href);
+   if (!response.success) return "Failed to generate farewell image. Please try again later.";
+  const attachment = new MessageAttachment(response.buffer, "farewell.png");
+
+  
+  if (!config) return;
+  let content;
+
+  
+
+   // build content
+  if (config.content) content = await parse(config.content, member, inviterData);
+
+  // build embed
+  const embed = new MessageEmbed();
+  if (config.embed.description) embed.setDescription(await parse(config.embed.description, member, inviterData));
+  if (config.embed.color) embed.setColor(config.embed.color);
+  if (config.embed.thumbnail) embed.setThumbnail(member.user.displayAvatarURL());
+  if (config.embed.footer) {
+    embed.setFooter(await parse(config.embed.footer, member, inviterData));
+  }
+
+  // set default message
+  if (!config.content && !config.embed.description && !config.embed.footer) {
+    content =
+      type === "FAREWELL"
+        ? `Goodbye, ${member.displayName} 👋`
+        : `${member.user.tag} has left the server 👋`;
+    return { content };
+  }
+
+  return { content, embeds: [embed], files: [attachment] };
+};
+
+/**
  * Send farewell message
  * @param {import('discord.js').GuildMember} member
  * @param {Object} inviterData
@@ -125,8 +175,8 @@ async function sendFarewell(member, inviterData = {}) {
   const channel = member.guild.channels.cache.get(config.channel);
   if (!channel) return;
 
-  // build farewell message
-  const response = await buildGreeting(member, "FAREWELL", config, inviterData);
+  // build welcome message
+  const response = await buildFarewell(member, "FAREWELL", config, inviterData);
 
   sendMessage(channel, response);
 }

@@ -8,7 +8,7 @@ const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch
 router.get("/login", async function (req, res) {
   if (!req.user || !req.user.id || !req.user.guilds) {
     return res.redirect(
-      `https://discordapp.com/api/oauth2/authorize?client_id=${req.client.user.id
+      `https://discord.com/api/oauth2/authorize?client_id=${req.client.user.id
       }&scope=identify%20guilds&response_type=code&redirect_uri=${encodeURIComponent(
         req.client.config.DASHBOARD.baseURL + "api/callback"
       )}&state=${req.query.state || "no"}`
@@ -42,7 +42,6 @@ router.get("/callback", async (req, res) => {
   // Fetch tokens (used to fetch user information's)
   const tokens = await response.json();
   // If the code isn't valid
-  console.log(tokens);
   if (tokens.error || !tokens.access_token) return res.redirect(`/api/login&state=${req.query.state}`);
   const userData = {
     infos: null,
@@ -51,7 +50,7 @@ router.get("/callback", async (req, res) => {
   while (!userData.infos || !userData.guilds) {
     /* User infos */
     if (!userData.infos) {
-      response = await fetch("http://discordapp.com/api/users/@me", {
+      response = await fetch("https://discord.com/api/users/@me", {
         method: "GET",
         headers: { Authorization: `Bearer ${tokens.access_token}` },
       });
@@ -61,7 +60,7 @@ router.get("/callback", async (req, res) => {
     }
     /* User guilds */
     if (!userData.guilds) {
-      response = await fetch("https://discordapp.com/api/users/@me/guilds", {
+      response = await fetch("https://discord.com/api/users/@me/guilds", {
         method: "GET",
         headers: { Authorization: `Bearer ${tokens.access_token}` },
       });
@@ -70,6 +69,7 @@ router.get("/callback", async (req, res) => {
       else userData.guilds = json;
     }
   }
+
   /* Change format (from "0": { data }, "1": { data }, etc... to [ { data }, { data } ]) */
   const guilds = [];
   for (const guildPos in userData.guilds) guilds.push(userData.guilds[guildPos]);

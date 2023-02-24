@@ -11,14 +11,14 @@ module.exports = {
   },
   DASHBOARD: {
     enabled: true, // enable or disable dashboard
-    baseURL: "http://localhost:8080/", // base url
-    failureURL: "http://localhost:8080/servers", // failure redirect url
+    baseURL: "https://dashboard.aiobot.gg/", // base url
+    failureURL: "https://dashboard.aiobot.gg/servers", // failure redirect url
     port: "8080"
   },
   INTERACTIONS: {
     SLASH: true, // Should the interactions be enabled
     CONTEXT: true, // Should contexts be enabled
-    GLOBAL: false, // Should the interactions be registered globally
+    GLOBAL: true, // Should the interactions be registered globally
     TEST_GUILD_ID: "", // Guild ID where the interactions should be registered. [** Test you commands here first **]
   },
   XP_SYSTEM: {

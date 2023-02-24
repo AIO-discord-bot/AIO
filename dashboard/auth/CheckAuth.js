@@ -1,5 +1,4 @@
 module.exports = async (req, res, next) => {
-  console.log(req.session);
   if (!req.session.user) {
 
     const redirectURL = req.originalUrl.includes("login") || req.originalUrl === "/" ? "/servers" : req.originalUrl;
