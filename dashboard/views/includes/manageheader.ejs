@@ -11,13 +11,26 @@
     py-4
     border-b border-white/10
   ">
-  <nav class="flex-1 flex items-center justify-end">
+  <nav class="flex-1 flex items-center justify-end ml-2">
     <a href="/logout" class="flex items-center">
-      <img src="<%= user.displayAvatar %>" width="40" height="40" class="rounded-full" alt="User Image" />
+      <img src="<%= user.displayAvatar %>" width="40" height="40" class="rounded-full rg-blob-2" alt="User Image" />
       <btn class="btn-two">
         <i class="fa-brands fa-discord"></i>
         <%= user.username %>#<%= user.discriminator %>
       </btn>
+      <a href="/premium" class="flex items-center">
+
+        <span class="text-lg ml-2">
+          <btn
+            class="px-3 py-1 rounded-md flex-[1/2] mt-4 premiumButton transition-opacity duration-300 hover:opacity-70">
+            Premium <i class="fa-duotone fa-crown"></i>
+          </btn>
+        </span>
+        <div class="sc-hRwTwm jNwnxb">
+        </div>
+  
+      </a>
+      </span>
     </a>
   </nav>
 </header>

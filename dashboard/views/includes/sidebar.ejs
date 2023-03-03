@@ -39,8 +39,8 @@
       <br>
       <br>
       <li class="p-1 flex w-full">
-        <a href="/manage/<%= guild.id %>/embed"
-          class="<% if(currentURL.endsWith('embed')) { %> bg-white/5 font-semibold <% } else { %> bg-white/10 <% } %> w-full px-4 py-3 rounded font-sans">
+        <a href="/manage/<%= guild.id %>/embed" 
+          class="<% if(currentURL.endsWith('embed')) { %> bg-white/5 font-semibold disabled <% } else { %> bg-white/10 disabled <% } %> w-full px-4 py-3 rounded font-sans disabled ">
           <i class="fa fa-bars mr-1 w-6"></i>
           <span>Embed Builder</span>
         </a>

@@ -6,15 +6,19 @@
 
     <%- include('includes/header') %>
       <% if(user.displayedGuilds){ %>
-        <h1 class="text-center mt-8 mb-2 text-5xl font-bold">
+        <h1 class="text-center mt-8 mb-2 text-5xl title-fnt ">
           <btn class="btn-one">Select
             a server</btn>
+            <br>
+            <p1 class="text-lg font-semibold ml-4"><span class="keyboard-key-d">CTRL</span> + <span class="keyboard-key-d">SHIFT</span> + <span class="keyboard-key-d">R </span></p1>
+            
 
         </h1><br>
         <div class="flex justify-center content-center">
           <form class="nosubmit">
             <input class="nosubmit" type="search" oninput="Search()" placeholder="Search for a server...">
           </form>
+          
         </div>
 
         <br>
@@ -57,7 +61,7 @@
                 </div>
 
                 <div class="flex-1 flex justify-end items-center">
-                  <% if(guild.settingsUrl.includes('discordapp.com')) { %>
+                  <% if(guild.settingsUrl.includes('discord.com')) { %>
                     <a href="<%= guild.settingsUrl %>" class="loading"><button
                         class="px-3 py-1 rounded-md bg-primary transition-opacity duration-300 hover:opacity-70">
                         <btn class="btn-1"><i class="fa fa-plus"></i> Invite</btn>

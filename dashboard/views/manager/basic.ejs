@@ -8,7 +8,7 @@
 
         <div class="flex flex-col col-span-6 container">
           <%- include('../includes/manageheader') %>
-            <h2 class="text-3xl font-bold mx-8 mt-6 mb-2"><i class="fa-solid fa-shield-check fa-sm"></i> Management
+            <h2 class="text-3xl font-bold mx-8 mt-6 mb-2"><i class="fa-solid fa-shield-check fa-sm title-fnt"></i> Management
             </h2>
             <section class="grid grid-cols gap-4 my-4 mx-8 relative">
               <!-- BASIC CONFIGURATION -->
@@ -23,7 +23,7 @@
                       <div class="help-tip">
                         <p>Prefix: The prefix the server uses to summon the bot E.G !help | Moderation Logs: The channel
                           all moderation logs are sent to E.G when a user is banned!</p>
-                      </div><label>Prefix:</label>
+                      </div><label><span class="">Prefix:<sup>*</sup></label>
                       <input type="text" name="prefix" class="px-3 py-1 rounded-md bg-txt-box txt-white"
                         placeholder="<%= guild.prefix %>" />
                     </div>

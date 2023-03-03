@@ -5,11 +5,16 @@
 
   <nav class="flex items-center justify-end">
     <a href="/logout" class="flex items-center">
-      <img src="<%= user.displayAvatar %>" width="40" height="40" class="rounded-full" alt="User Image" /><span
+      <img src="<%= user.displayAvatar %>" width="40" height="40" class="rounded-full rg-blob" alt="User Image" /><span
         class="text-lg ml-2">
         <btn class="btn-two">
-          <i class="fa-brands fa-discord"></i>
-          <%= user.username %>#<%= user.discriminator %>
+        <!-- create a dropdown on the users name -->
+          
+              <i class="fa-brands fa-discord"></i>
+              <%= user.username %>#<%= user.discriminator %>
+            </button>
+            
+            </div>
             
               </div>
         </btn>
