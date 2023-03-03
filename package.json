@@ -17,7 +17,7 @@
     "@vitalets/google-translate-api": "^9.1.0",
     "ascii-table": "0.0.9",
     "btoa": "^1.2.1",
-    "chalk": "^4.1.2",
+    "chalk": "^5.2.0",
     "connect-mongo": "^4.6.0",
     "cookie-parser": "^1.4.6",
     "country-language": "^0.1.7",
@@ -66,8 +66,8 @@
     "eslint-plugin-jsdoc": "^36.0.8",
     "node": "^16.10.0",
     "nodemon": "^2.0.20",
-    "prettier": "2.8.3",
-    "tailwindcss": "^3.2.4"
+    "prettier": "2.8.4",
+    "tailwindcss": "^3.2.7"
   },
   "keywords": [
     "discord",
