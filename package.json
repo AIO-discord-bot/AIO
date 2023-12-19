@@ -25,7 +25,7 @@
     "discord-backup": "^3.3.2",
     "discord-giveaways": "^5.2.2",
     "discord-logs": "^2.2.1",
-    "discord.js": "^13.3.1",
+    "discord.js": "^14.8.0",
     "dotenv": "^16.0.3",
     "ejs": "^3.1.8",
     "enhanced-ms": "^2.2.0",
